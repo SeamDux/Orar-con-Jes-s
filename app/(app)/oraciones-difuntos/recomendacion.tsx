@@ -113,7 +113,7 @@ export default function RecomendacionScreen() {
 
           <Pressable 
             style={styles.button}
-            onPress={() => router.back()}
+            onPress={() => router.push('/oraciones-difuntos')}
           >
             <Text style={styles.buttonText}>Volver al listado</Text>
           </Pressable>
