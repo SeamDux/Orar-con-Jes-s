@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Text, View } from '../../../components/Themed';
 import Colors from '../../../constants/Colors';
 import { Stack, router } from 'expo-router';
+import { ThemedText } from '../../../components/ThemedText';
 
 export default function NovenaSanJoseScreen() {
   return (
@@ -23,7 +24,7 @@ export default function NovenaSanJoseScreen() {
           </View>
 
           <View style={styles.sectionCard}>
-            <Text style={styles.sectionTitle}>Oración Preparatoria</Text>
+            <ThemedText type="sectionTitle">Oración Preparatoria</ThemedText>
             <Text style={styles.prayer}>
               Salve, custodio del Redentor{'\n'}
               y esposo de la Virgen María.{'\n'}
@@ -41,7 +42,7 @@ export default function NovenaSanJoseScreen() {
           </View>
 
           <View style={styles.sectionCard}>
-            <Text style={styles.sectionTitle}>Día primero</Text>
+            <ThemedText type="sectionTitle">Día primero</ThemedText>
             <Text style={styles.prayer}>
               Oh benignísimo Jesús, así como consolaste a tu padre amado en las perplejidades e incertidumbres que tuvo, dudando en abandonar a tu Santísima Madre su esposa, así te suplicamos humildemente por intercesión de San José nos concedas mucha prudencia y acierto en todos los casos dudosos y angustias de nuestra vida, para que siempre acertemos con tu santísima voluntad.
             </Text>

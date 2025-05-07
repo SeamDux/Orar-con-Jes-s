@@ -44,7 +44,8 @@ export default function CantosEntradaScreen() {
           </View>
 
           <View style={styles.songCard}>
-            <Text style={styles.songTitle}>2. Llegad hasta el Señor salmo 99</Text>
+            <Text style={styles.songTitle}>2. Llegad hasta el Señor</Text>
+            <Text style={styles.antifona}>Salmo 99</Text>
             <Text style={styles.lyrics}>
               <Text style={styles.italic}>Llegad hasta el Señor, cantando himnos de gozo.</Text>{'\n\n'}
               Aclamad al Señor, tierra entera, servid al Señor con alegría,{'\n'}
@@ -105,7 +106,7 @@ export default function CantosEntradaScreen() {
           </View>
 
           <View style={styles.songCard}>
-            <Text style={styles.songTitle}>5. ¿Señor, quién entrará en tu Santuario para adorar?</Text>
+            <Text style={styles.songTitle}>5. ¿Señor, quién entrará?</Text>
             <Text style={styles.lyrics}>
               ¿Señor, quién entrará en tu Santuario para adorar?{'\n'}
               El de manos limpias,{'\n'}
@@ -115,12 +116,43 @@ export default function CantosEntradaScreen() {
               Señor, yo quiero entrar{'\n'}
               en tu Santuario{'\n'}
               para adorar. (bis){'\n\n'}
-              Señor, ya puedo entrar{'\n'}
-              en tu Santuario{'\n'}
-              para adorar{'\n'}
               Tu sangre me lava{'\n'}
               tu fuego me quema{'\n'}
               tu Espíritu Santo inunda mi ser (bis)
+            </Text>
+          </View>
+
+          <View style={styles.songCard}>
+            <Text style={styles.songTitle}>6. Christus heri et hodie</Text>
+            <Text style={styles.lyrics}>
+              <Text style={styles.italic}>Christus heri et hodie{'\n'}
+              Finis et Principium;{'\n'}
+              Christus Alpha et Omega.{'\n'}
+              Ipsi gloria saecula.</Text>{'\n\n'}
+              1.Que alegría cuando me dijeron:{'\n'}
+              "Vayamos a la Casa del Señor.{'\n'}
+              Ciudad de Dios alza tus dinteles{'\n'}
+              delante de los pueblos que aquí vienen{'\n\n'}
+
+              Suena la trompeta de un nuevo milenio,{'\n'}
+              recuerda a la Iglesia:{'\n'}
+              ¡Duc in altum!{'\n\n'}
+
+              2. Sol y luna ya han señalado{'\n'}
+              desde que te abajaras hasta el hombre.{'\n'}
+              Son dos milenios de tu encarnación{'\n'}
+              ¡Asumes nuestra sangre y nuestra historia!{'\n\n'}
+
+              3. Y bendita eres tu María,{'\n'}
+              la gracia del Señor reosa en ti.{'\n'}
+              Tu dulce seno, vientre inmaculado{'\n'}
+              nos dio al esperado de los siglos.{'\n'}
+              Que nacen del bien y la verdad{'\n\n'}
+
+              4. Verbo eterno, Tu el predilecto,{'\n'}
+              espada penetrante de dos filos,{'\n'}
+              Dios de justicia y de misericordia,{'\n'}
+              Tu cambias nuestro llanto en fiesta y danza.
             </Text>
           </View>
         </View>
@@ -175,7 +207,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: Colors.primary,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   lyrics: {
     fontSize: 16,
@@ -184,5 +216,12 @@ const styles = StyleSheet.create({
   },
   italic: {
     fontStyle: 'italic',
+  },
+  antifona: {
+      fontSize: 18,
+      color: Colors.primary,
+      fontStyle: 'italic',
+      marginVertical: 12,
+      textAlign: 'justify',
   },
 }); 

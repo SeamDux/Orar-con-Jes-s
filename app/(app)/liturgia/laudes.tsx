@@ -279,25 +279,29 @@ export default function LaudesScreen() {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Preces</Text>
 
-            <Text style={styles.text}>Adoremos a Cristo, que por nosotros murió y por nosotros resucitó, y digámosle suplicantes:</Text>
+            <Text style={styles.text}>Glorifiquemos al Señor Jesús, luz que alumbra a todo hombrey sol de justicia que no conoce el ocaso, y digámosle:</Text>
 
-            <Text style={styles.versiculo}>Rey victorioso, escucha nuestra oración.</Text>
+            <Text style={styles.versiculo}>Tú que eres nuestra vida y nuestra salvación, Señor, ten piedad.</Text>
 
-            <Text style={styles.text}>Cristo, luz y salvación de todos los pueblos,</Text>
-            <Text style={styles.respuesta}>derrama el fuego del Espíritu Santo sobre los que has querido que fueran testigos de tu resurrección en el mundo.</Text>
+            <Text style={styles.text}>Señor del universo, al darte gracias por el nuevo día que ahora empieza,</Text>
+            <Text style={styles.respuesta}>- te pedimos que el recuerdo de tu santa resurrección sea nuestro gozo durante este domingo.</Text>
 
-            <Text style={styles.text}>Que Israel te reconozca como el Mesías de su esperanza,</Text>
-            <Text style={styles.respuesta}>y la tierra toda se llene del conocimiento de tu gloria.</Text>
+            <Text style={styles.text}>Que tu Espíritu Santo nos enseñe a cumplir tu voluntad,</Text>
+            <Text style={styles.respuesta}>- y que tu sabiduría dirija hoy todas nuestras acciones.</Text>
 
-            <Text style={styles.text}>Consérvanos en la comunión de tu Iglesia</Text>
-            <Text style={styles.respuesta}>y haz que con todos nuestros hermanos lleguemos a la paz de tu reino.</Text>
+            <Text style={styles.text}>Que al celebrar la eucaristía de este domingo tu palabra nos llene de gozo,</Text>
+            <Text style={styles.respuesta}>- y que la participación en el banquete de tu amor haga crecer nuestra esperanza.</Text>
 
-            <Text style={styles.text}>Tú que has vencido a la muerte, nuestro enemigo,</Text>
-            <Text style={styles.respuesta}>destruye en nosotros el poder del mal, tu enemigo, para que vivamos siempre para ti, vencedor inmortal.</Text>
+            <Text style={styles.text}>Que sepamos contemplar las maravillas que tu generosidad nos concede,</Text>
+            <Text style={styles.respuesta}>- y vivamos durante todo el día en acción de gracias.</Text>
+
+            <Text style={styles.text}>(Se pueden añadir algunas intenciones libres).</Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Padre Nuestro</Text>
+            <Text style={styles.antifona}>Digamos ahora todos juntos la oración que Cristo nos enseñó:</Text>
+
             <Text style={styles.text}>Padre nuestro, que estás en el cielo,</Text>
             <Text style={styles.text}>santificado sea tu Nombre;</Text>
             <Text style={styles.text}>venga a nosotros tu reino;</Text>
@@ -314,7 +318,11 @@ export default function LaudesScreen() {
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Oración</Text>
-            <Text style={styles.text}>Señor, Dios todopoderoso: ya que nos has concedido llegar al comienzo de este día, sálvanos hoy con tu poder, para que no caigamos en ningún pecado, sino que nuestras palabras, pensamientos y acciones sigan el camino de tus mandatos. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén.</Text>
+            <Text style={styles.text}>Dios todopoderoso y eterno, que gobiernas el cielo y la tierra,
+            escucha las súplicas de tu pueblo y concédenos tu paz en nuestro
+            tiempo. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina
+            contigo en la unidad del Espíritu Santo y es Dios, por los siglos
+            de los siglos.</Text>
           </View>
 
           <View style={styles.section}>

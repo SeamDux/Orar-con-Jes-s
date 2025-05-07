@@ -23,15 +23,17 @@ export default function CantosOfertorioScreen() {
           </View>
 
           <View style={styles.songCard}>
-            <Text style={styles.songTitle}>1. Recibe Oh Padre Santo</Text>
+            <Text style={styles.songTitle}>1. Recibe, oh Padre Santo</Text>
             <Text style={styles.lyrics}>
-              Recibe Oh Padre Santo, Esta hostia inmaculada{'\n'}
-              Que indignos te ofrecemos Por nuestros pecados.{'\n'}
+              Recibe oh Padre Santo,{'\n'}
+              esta hostia inmaculada{'\n'}
+              que indignos te ofrecemos{'\n'}
+              por nuestro pecados{'\n'}
               Y por la salud del mundo.{'\n\n'}
-              Recibe Oh Padre Santo,{'\n'}
-              Este Cáliz inmaculado{'\n'}
-              Que indignos te ofrecemos{'\n'}
-              Por nuestros pecados.{'\n'}
+              Recibe oh Padre Santo,{'\n'}
+              este cáliz inmaculado{'\n'}
+              que indignos te ofrecemos{'\n'}
+              por nuestros pecados.{'\n'}
               Y por la salud del mundo.
             </Text>
           </View>

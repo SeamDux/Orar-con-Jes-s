@@ -205,7 +205,7 @@ export default function VigiliaScreen() {
 
           <Pressable 
             style={styles.button}
-            onPress={() => router.push('/oraciones-difuntos')}
+            onPress={() => router.back()}
           >
             <Text style={styles.buttonText}>Volver al listado</Text>
           </Pressable>

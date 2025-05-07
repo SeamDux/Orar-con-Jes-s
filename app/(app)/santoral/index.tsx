@@ -61,7 +61,8 @@ export default function SantoralScreen() {
               { day: '14', saint: 'S. Cirilo y S. Metodio.' },
               { day: '17', saint: 'Los siete santos fundares de los servitas.' },
               { day: '21', saint: 'S. Pedro Damiano.' },
-              { day: '22', saint: 'La Cátedra de S. Pedro. 23 S. Policarpo.' },
+              { day: '22', saint: 'La Cátedra de S. Pedro.' },
+              { day: '23', saint: 'S. Policarpo.' },
             ].map(item => (
               <View key={item.day} style={styles.dateItem}>
                 <Text style={styles.date}>{item.day}</Text>
@@ -76,7 +77,8 @@ export default function SantoralScreen() {
               { day: '04', saint: 'S. Casimiro.' },
               { day: '07', saint: 'Sta. Perpetua y Sta. Felicidad.' },
               { day: '08', saint: 'S. Juan de Dios.' },
-              { day: '09', saint: 'Sta. Francisca Romana.17 S. Patricio.' },
+              { day: '09', saint: 'Sta. Francisca Romana.' },
+              { day: '17', saint: 'S. Patricio.' },
               { day: '18', saint: 'S. Cirilo de Jerusalén.' },
               { day: '19', saint: 'S. José.' },
               { day: '23', saint: 'Sto. Toribio de Mogrovejo.' },
@@ -212,7 +214,8 @@ export default function SantoralScreen() {
               { day: '20', saint: 'S. Bernardo.' },
               { day: '21', saint: 'S. Pío X.' },
               { day: '22', saint: 'Sta. María Reina.' },
-              { day: '23', saint: 'Sta. Rosa de Lima. 24 S. Bartolomé.' },
+              { day: '23', saint: 'Sta. Rosa de Lima.' },
+              { day: '24', saint: 'S. Bartolomé.' },
               { day: '25', saint: 'S. Luis de Francia. S. José de Calasanz.' },
               { day: '26', saint: 'Beato Ceferino Namuncurá' },
               { day: '27', saint: 'Sta. Mónica.' },

@@ -71,7 +71,7 @@ export default function HomePage() {
           <Link href="/(app)/evangelio" asChild>
             <TouchableOpacity style={styles.menuItem}>
               <MaterialCommunityIcons name="cross" size={32} color={Colors.primary} />
-              <Text style={styles.menuText}>Lecturas del Día</Text>
+              <Text style={styles.menuText}>Evangelio del Día</Text>
             </TouchableOpacity>
           </Link>
 

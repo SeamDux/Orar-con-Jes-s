@@ -114,7 +114,7 @@ export default function CementerioScreen() {
 
           <Pressable 
             style={styles.button}
-            onPress={() => router.push('/oraciones-difuntos')}
+            onPress={() => router.back()}
           >
             <Text style={styles.buttonText}>Volver al listado</Text>
           </Pressable>

@@ -94,7 +94,7 @@ export default function SacramentoScreen() {
 
           <Pressable 
             style={styles.button}
-            onPress={() => router.push('/devociones-moribundo')}
+            onPress={() => router.back()}
           >
             <Text style={styles.buttonText}>Volver al listado</Text>
           </Pressable>

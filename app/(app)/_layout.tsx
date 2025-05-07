@@ -12,7 +12,7 @@ export default function AppLayout() {
           backgroundColor: Colors.primary,
         },
         headerTintColor: '#fff',
-        headerBackTitle: 'Volver',
+        headerBackTitle: 'Orar con Jesús',
         headerTitleStyle: {
           fontWeight: 'bold',
         }

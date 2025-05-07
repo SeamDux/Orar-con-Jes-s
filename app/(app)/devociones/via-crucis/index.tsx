@@ -14,7 +14,7 @@ export default function ViaCrucisScreen() {
     { numero: 3, titulo: 'Cae Jesús por primera vez' },
     { numero: 4, titulo: 'Jesús encuentra a María, Su Santísima Madre' },
     { numero: 5, titulo: 'Simón ayuda a llevar la Cruz de Jesús' },
-    { numero: 6, titulo: 'La Verónica enjuga el rostro de Jesús' },
+    { numero: 6, titulo: 'Una piadosa mujer enjuga el rostro de Jesús' },
     { numero: 7, titulo: 'Jesús cae por segunda vez' },
     { numero: 8, titulo: 'Jesús consuela a las mujeres de Jerusalén' },
     { numero: 9, titulo: 'Jesús cae por tercera vez' },

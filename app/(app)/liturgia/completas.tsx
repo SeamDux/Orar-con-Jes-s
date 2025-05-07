@@ -3,6 +3,7 @@ import { StyleSheet, ScrollView } from 'react-native';
 import { Text, View } from '../../../components/Themed';
 import Colors from '../../../constants/Colors';
 import { Stack } from 'expo-router';
+import { ThemedText } from '../../../components/ThemedText';
 
 export default function CompletasScreen() {
   return (
@@ -22,91 +23,86 @@ export default function CompletasScreen() {
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Invocación inicial</Text>
-            <Text style={styles.versiculo}>V. Dios mío, ven en mi auxilio</Text>
+            <Text style={styles.versiculo}>V. Dios mío, ven en mi auxilio.</Text>
             <Text style={styles.respuesta}>R. Señor, date prisa en socorrerme.</Text>
-            <Text style={styles.text}>Gloria al Padre, y al Hijo, y al Espíritu Santo.</Text>
-            <Text style={styles.text}>Como era en el principio, ahora y siempre,</Text>
-            <Text style={styles.text}>por los siglos de los siglos. Amén.</Text>
-            <Text style={styles.text}>Aleluya.</Text>
+            <Text style={styles.text}>Gloria. Aleluya.</Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Examen de conciencia</Text>
-            <Text style={styles.text}>Hermanos, examinemos nuestra conciencia,</Text>
-            <Text style={styles.text}>y arrepintámonos de nuestros pecados.</Text>
-            <Text style={styles.text}>Yo confieso ante Dios todopoderoso</Text>
-            <Text style={styles.text}>y ante vosotros, hermanos,</Text>
-            <Text style={styles.text}>que he pecado mucho</Text>
-            <Text style={styles.text}>de pensamiento, palabra, obra y omisión:</Text>
-            <Text style={styles.text}>por mi culpa, por mi culpa, por mi gran culpa.</Text>
-            <Text style={styles.text}>Por eso ruego a santa María, siempre Virgen,</Text>
-            <Text style={styles.text}>a los ángeles, a los santos y a vosotros, hermanos,</Text>
-            <Text style={styles.text}>que intercedáis por mí ante Dios, nuestro Señor.</Text>
+            <Text style={styles.text}>
+              Es muy de alabar que, después de la invocación inicial, se haga el examen de conciencia, el cual en la celebración comunitaria puede concluirse con alguna de las fórmulas del acto penitencial de la misa.
+            </Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Himno</Text>
-            <Text style={styles.text}>Antes que termine el día,</Text>
-            <Text style={styles.text}>Creador del universo, te suplicamos</Text>
-            <Text style={styles.text}>que por tu clemencia</Text>
-            <Text style={styles.text}>seas nuestro protector y guardián.</Text>
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Cuando la luz del sol es ya poniente,</Text>
+              <Text style={styles.text}>gracias, Señor, es nuestra melodía;</Text>
+              <Text style={styles.text}>recibe, como ofrenda, amablemente,</Text>
+              <Text style={styles.text}>nuestro dolor, trabajo y alegría.</Text>
+            </View>
 
-            <Text style={styles.text}>Que se alejen los sueños</Text>
-            <Text style={styles.text}>y las fantasías de la noche;</Text>
-            <Text style={styles.text}>reprime a nuestro enemigo</Text>
-            <Text style={styles.text}>para que no mancille nuestros cuerpos.</Text>
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Si poco fue el amor en nuestro empeño</Text>
+              <Text style={styles.text}>de darle vida al día que fenece,</Text>
+              <Text style={styles.text}>convierta en realidad lo que fue un sueño</Text>
+              <Text style={styles.text}>tu gran amor que todo lo engrandece.</Text>
+            </View>
 
-            <Text style={styles.text}>Concédenos, Padre piadosísimo,</Text>
-            <Text style={styles.text}>y a tu Hijo único,</Text>
-            <Text style={styles.text}>junto con el Espíritu Paráclito,</Text>
-            <Text style={styles.text}>reinar por todos los siglos. Amén.</Text>
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Tu cruz, Señor, redime nuestra suerte</Text>
+              <Text style={styles.text}>de pecadora en justa, e ilumina</Text>
+              <Text style={styles.text}>la senda de la vida y de la muerte</Text>
+              <Text style={styles.text}>del hombre que en la fe lucha y camina.</Text>
+            </View>
+
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Jesús, Hijo del Padre, cuando avanza</Text>
+              <Text style={styles.text}>la noche oscura sobre nuestro día,</Text>
+              <Text style={styles.text}>concédenos la paz y la esperanza</Text>
+              <Text style={styles.text}>de esperar cada noche tu gran día. Amén.</Text>
+            </View>
+
+            <Text style={styles.salmoSubtitle}>O bien:</Text>
+
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Se inclina ya mi frente,</Text>
+              <Text style={styles.text}>sellado está el trabajo;</Text>
+              <Text style={styles.text}>Señor, tu pecho sea</Text>
+              <Text style={styles.text}>la gracia del descanso.</Text>
+            </View>
+
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Mis ojos se retiran,</Text>
+              <Text style={styles.text}>la voz deja su canto,</Text>
+              <Text style={styles.text}>pero el amor enciende</Text>
+              <Text style={styles.text}>su lámpara velando.</Text>
+            </View>
+
+            <View style={styles.estrofa}>
+              <Text style={styles.text}>Lucero que te fuiste,</Text>
+              <Text style={styles.text}>con gran amor amado,</Text>
+              <Text style={styles.text}>en tu gloria dormimos</Text>
+              <Text style={styles.text}>y en sueños te adoramos. Amén.</Text>
+            </View>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Salmodia</Text>
-            <Text style={styles.antifona}>Ant. 1: Sálvanos, Señor, despiertos, protégenos mientras dormimos, para que velemos con Cristo y descansemos en paz. Aleluya.</Text>
+            <Text style={styles.antifona}>Ant.: Al amparo del Altísimo no temo el espanto nocturno.</Text>
 
-            <Text style={styles.salmoTitle}>Salmo 4</Text>
-            <Text style={styles.salmoSubtitle}>Oración vespertina</Text>
-
-            <Text style={styles.text}>Cuando te invoco, respóndeme, Dios, defensor mío;</Text>
-            <Text style={styles.text}>tú que en el aprieto me diste anchura,</Text>
-            <Text style={styles.text}>ten piedad de mí y escucha mi oración.</Text>
-
-            <Text style={styles.text}>Y vosotros, ¿hasta cuándo ultrajaréis mi honor,</Text>
-            <Text style={styles.text}>amaréis la falsedad y buscaréis el engaño?</Text>
-
-            <Text style={styles.text}>Sabedlo: el Señor hizo milagros en mi favor,</Text>
-            <Text style={styles.text}>y el Señor me escuchará cuando lo invoque.</Text>
-
-            <Text style={styles.text}>Temblad y no pequéis,</Text>
-            <Text style={styles.text}>reflexionad en el silencio de vuestro lecho.</Text>
-
-            <Text style={styles.text}>Ofreced sacrificios legítimos</Text>
-            <Text style={styles.text}>y confiad en el Señor.</Text>
-
-            <Text style={styles.text}>Muchos son los que dicen: "¿Quién nos hará ver la dicha,</Text>
-            <Text style={styles.text}>si la luz de tu rostro ha huido de nosotros?"</Text>
-
-            <Text style={styles.text}>Pero tú, Señor, has puesto en mi corazón más alegría</Text>
-            <Text style={styles.text}>que si abundara en trigo y en vino.</Text>
-
-            <Text style={styles.text}>En paz me acuesto y en seguida me duermo,</Text>
-            <Text style={styles.text}>porque tú solo, Señor, me haces vivir tranquilo.</Text>
-
-            <Text style={styles.antifona}>Ant. 1: Sálvanos, Señor, despiertos, protégenos mientras dormimos, para que velemos con Cristo y descansemos en paz. Aleluya.</Text>
-
-            <Text style={styles.antifona}>Ant. 2: Bajo la sombra de tus alas, protégeme, Señor. Aleluya.</Text>
-          </View>
-
-          <View style={styles.section}>
             <Text style={styles.salmoTitle}>Salmo 90</Text>
-            <Text style={styles.salmoSubtitle}>El que habita al amparo del Altísimo</Text>
+            <Text style={styles.salmoSubtitle}>A la sombra del Omnipotente</Text>
+
+            <Text style={styles.text}>Os he dado potestad para pisotear</Text>
+            <Text style={styles.text}>serpientes y escorpiones. (Lc 10,19)</Text>
 
             <Text style={styles.text}>Tú que habitas al amparo del Altísimo,</Text>
             <Text style={styles.text}>que vives a la sombra del Omnipotente,</Text>
-            <Text style={styles.text}>di al Señor: "Refugio mío, alcázar mío,</Text>
-            <Text style={styles.text}>Dios mío, confío en ti."</Text>
+            <Text style={styles.text}>di al Señor: «Refugio mío, alcázar mío,</Text>
+            <Text style={styles.text}>Dios mío, confío en ti».</Text>
 
             <Text style={styles.text}>Él te librará de la red del cazador,</Text>
             <Text style={styles.text}>de la peste funesta.</Text>
@@ -132,76 +128,133 @@ export default function CompletasScreen() {
             <Text style={styles.text}>ni la plaga llegará hasta tu tienda,</Text>
             <Text style={styles.text}>porque a sus ángeles ha dado órdenes</Text>
             <Text style={styles.text}>para que te guarden en tus caminos;</Text>
-            <Text style={styles.text}>te llevarán en sus palmas,</Text>
+
+            <Text style={styles.text}>Te llevarán en sus palmas,</Text>
             <Text style={styles.text}>para que tu pie no tropiece en la piedra;</Text>
             <Text style={styles.text}>caminarás sobre áspides y víboras,</Text>
             <Text style={styles.text}>pisotearás leones y dragones.</Text>
 
-            <Text style={styles.text}>"Se puso junto a mí: lo libraré;</Text>
+            <Text style={styles.text}>«Se puso junto a mí: lo libraré;</Text>
             <Text style={styles.text}>lo protegeré porque conoce mi nombre,</Text>
             <Text style={styles.text}>me invocará y lo escucharé.</Text>
             <Text style={styles.text}>Con él estaré en la tribulación,</Text>
-            <Text style={styles.text}>lo defenderé, lo glorificaré;</Text>
+            <Text style={styles.text}>lo defenderé, lo glorificaré,</Text>
             <Text style={styles.text}>lo saciaré de largos días,</Text>
-            <Text style={styles.text}>y le haré ver mi salvación."</Text>
+            <Text style={styles.text}>y le haré ver mi salvación».</Text>
 
-            <Text style={styles.antifona}>Ant. 2: Bajo la sombra de tus alas, protégeme, Señor. Aleluya.</Text>
-
-            <Text style={styles.antifona}>Ant. 3: El Señor nos guarde de todo mal y nos lleve a la vida eterna. Aleluya.</Text>
+            <Text style={styles.antifona}>Ant.: Al amparo del Altísimo no temo el espanto nocturno.</Text>
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.salmoTitle}>Cántico de Simeon - Lc 2, 29-32</Text>
-            <Text style={styles.antifona}>Ant.: Sálvanos, Señor, despiertos, protégenos mientras dormimos,
-            para que velemos con Cristo y descansemos en paz.</Text>
-            <Text style={styles.salmoSubtitle}>Nunc dimittis</Text>
+            <Text style={styles.sectionTitle}>Lectura breve</Text>
+            <Text style={styles.cita}>Ap 22, 4-5</Text>
+            <Text style={styles.text}>
+              Verán el rostro del Señor, y tendrán su nombre en la frente. Y no habrá más noche, y no necesitarán luz de lámpara ni de sol, porque el Señor Dios alumbrará sobre ellos, y reinarán por los siglos de los siglos.
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Responsorio breve</Text>
+            <Text style={styles.versiculo}>V. En tus manos, Señor, encomiendo mi espíritu.</Text>
+            <Text style={styles.respuesta}>R. En tus manos, Señor, encomiendo mi espíritu.</Text>
+            <Text style={styles.versiculo}>V. Tú, el Dios leal, nos librarás.</Text>
+            <Text style={styles.respuesta}>R. Te encomiendo mi espíritu.</Text>
+            <Text style={styles.versiculo}>V. Gloria al Padre, y al Hijo, y al Espíritu Santo.</Text>
+            <Text style={styles.respuesta}>R. En tus manos, Señor, encomiendo mi espíritu.</Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Cántico evangélico</Text>
+            <Text style={styles.antifona}>
+              Ant.: Sálvanos, Señor, despiertos, protégenos mientras dormimos, para que velemos con Cristo y descansemos en paz.
+            </Text>
+
+            <Text style={styles.salmoTitle}>Cántico de Simeón</Text>
+            <Text style={styles.cita}>Lc 2, 29-32</Text>
+            <Text style={styles.salmoSubtitle}>Cristo, luz de las naciones y gloria de Israel</Text>
 
             <Text style={styles.text}>Ahora, Señor, según tu promesa,</Text>
-            <Text style={styles.text}>puedes dejar a tu siervo ir en paz.</Text>
+            <Text style={styles.text}>puedes dejar a tu siervo irse en paz,</Text>
 
-            <Text style={styles.text}>Porque mis ojos han visto a tu Salvador,</Text>
-            <Text style={styles.text}>a quien has presentado ante todos los pueblos</Text>
+            <Text style={styles.text}>porque mis ojos han visto a tu Salvador,</Text>
+            <Text style={styles.text}>a quien has presentado ante todos los pueblos:</Text>
 
             <Text style={styles.text}>luz para alumbrar a las naciones</Text>
             <Text style={styles.text}>y gloria de tu pueblo Israel.</Text>
 
-            <Text style={styles.antifona}>Ant.: Sálvanos, Señor, despiertos, protégenos mientras dormimos,
-            para que velemos con Cristo y descansemos en paz.</Text>
+            <Text style={styles.antifona}>
+              Ant.: Sálvanos, Señor, despiertos, protégenos mientras dormimos, para que velemos con Cristo y descansemos en paz.
+            </Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Oración</Text>
-            <Text style={styles.text}>Visita, Señor, esta morada,</Text>
-            <Text style={styles.text}>y aleja de ella todas las asechanzas del enemigo;</Text>
-            <Text style={styles.text}>que tus santos ángeles habiten en ella</Text>
-            <Text style={styles.text}>y nos guarden en paz,</Text>
-            <Text style={styles.text}>y que tu bendición permanezca siempre con nosotros.</Text>
-            <Text style={styles.text}>Por Jesucristo, nuestro Señor.</Text>
-            <Text style={styles.text}>Amén.</Text>
+            <Text style={styles.text}>
+              Humildemente te pedimos, Señor, que después de haber celebrado en este día los misterios de la resurrección de tu Hijo, sin temor alguno, descansemos en tu paz, y mañana nos levantemos alegres para cantar nuevamente tus alabanzas. Por Cristo nuestro Señor.
+            </Text>
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Bendición</Text>
+            <Text style={styles.sectionTitle}>Conclusión</Text>
             <Text style={styles.versiculo}>V. El Señor todopoderoso nos conceda una noche tranquila y una santa muerte.</Text>
             <Text style={styles.respuesta}>R. Amén.</Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Antífona final de la Santísima Virgen</Text>
-            <Text style={styles.antifona}>Dios te salve, Reina y Madre de misericordia,</Text>
-            <Text style={styles.antifona}>vida, dulzura y esperanza nuestra,</Text>
-            <Text style={styles.antifona}>Dios te salve.</Text>
-            <Text style={styles.antifona}>A ti llamamos los desterrados hijos de Eva;</Text>
-            <Text style={styles.antifona}>a ti suspiramos, gimiendo y llorando,</Text>
-            <Text style={styles.antifona}>en este valle de lágrimas.</Text>
-            <Text style={styles.antifona}>Ea, pues, Señora, abogada nuestra,</Text>
-            <Text style={styles.antifona}>vuelve a nosotros esos tus ojos misericordiosos;</Text>
-            <Text style={styles.antifona}>y después de este destierro muéstranos a Jesús,</Text>
-            <Text style={styles.antifona}>fruto bendito de tu vientre.</Text>
-            <Text style={styles.antifona}>¡Oh clemente, oh piadosa,</Text>
-            <Text style={styles.antifona}>oh dulce Virgen María!</Text>
-          </View>
+            
+            <View style={styles.antifonaGrupo}>
+              <Text style={styles.antifonaNumero}>I</Text>
+              <Text style={styles.antifonaTexto}>Madre del Redentor, virgen fecunda,</Text>
+              <Text style={styles.antifonaTexto}>puerta del cielo siempre abierta,</Text>
+              <Text style={styles.antifonaTexto}>estrella de mar,</Text>
+              <Text style={styles.antifonaTexto}>ven a librar al pueblo que tropieza</Text>
+              <Text style={styles.antifonaTexto}>y se quiere levantar.</Text>
+              <Text style={styles.antifonaTexto}>Ante la admiración de cielo y tierra,</Text>
+              <Text style={styles.antifonaTexto}>engendraste a tu santo Creador,</Text>
+              <Text style={styles.antifonaTexto}>y permaneces siempre virgen.</Text>
+              <Text style={styles.antifonaTexto}>Recibe el saludo del ángel Gabriel,</Text>
+              <Text style={styles.antifonaTexto}>y ten piedad de nosotros, pecadores.</Text>
+            </View>
 
+            <View style={styles.antifonaGrupo}>
+              <Text style={styles.antifonaNumero}>II</Text>
+              <Text style={styles.antifonaTexto}>Salve, Reina de los cielos</Text>
+              <Text style={styles.antifonaTexto}>y Señora de los ángeles;</Text>
+              <Text style={styles.antifonaTexto}>salve raíz, salve puerta,</Text>
+              <Text style={styles.antifonaTexto}>que dio paso a nuestra luz.</Text>
+              <Text style={styles.antifonaTexto}>Alégrate, virgen gloriosa,</Text>
+              <Text style={styles.antifonaTexto}>entre todas la más bella;</Text>
+              <Text style={styles.antifonaTexto}>salve, agraciada doncella,</Text>
+              <Text style={styles.antifonaTexto}>ruega a Cristo por nosotros.</Text>
+            </View>
+
+            <View style={styles.antifonaGrupo}>
+              <Text style={styles.antifonaNumero}>III</Text>
+              <Text style={styles.antifonaTexto}>Dios te salve, Reina y Madre de misericordia,</Text>
+              <Text style={styles.antifonaTexto}>vida, dulzura y esperanza nuestra,</Text>
+              <Text style={styles.antifonaTexto}>Dios te salve.</Text>
+              <Text style={styles.antifonaTexto}>A ti llamamos los desterrados hijos de Eva,</Text>
+              <Text style={styles.antifonaTexto}>a ti suspiramos, gimiendo y llorando,</Text>
+              <Text style={styles.antifonaTexto}>en este valle de lágrimas.</Text>
+              <Text style={styles.antifonaTexto}>Ea, pues, Señora, abogada nuestra,</Text>
+              <Text style={styles.antifonaTexto}>vuelve a nosotros esos tus ojos misericordiosos,</Text>
+              <Text style={styles.antifonaTexto}>y después de este destierro muéstranos a Jesús,</Text>
+              <Text style={styles.antifonaTexto}>fruto bendito de tu vientre.</Text>
+              <Text style={styles.antifonaTexto}>Oh clemente, oh piadosa,</Text>
+              <Text style={styles.antifonaTexto}>oh dulce Virgen María!</Text>
+            </View>
+
+            <View style={styles.antifonaGrupo}>
+              <Text style={styles.antifonaNumero}>IV</Text>
+              <Text style={styles.antifonaTexto}>Bajo tu amparo nos acogemos,</Text>
+              <Text style={styles.antifonaTexto}>santa Madre de Dios,</Text>
+              <Text style={styles.antifonaTexto}>no desprecies las oraciones</Text>
+              <Text style={styles.antifonaTexto}>que te dirigimos en nuestras necesidades,</Text>
+              <Text style={styles.antifonaTexto}>antes bien líbranos de todo peligro,</Text>
+              <Text style={styles.antifonaTexto}>oh Virgen gloriosa y bendita.</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </>
@@ -219,7 +272,7 @@ const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: Colors.error,
+    color: Colors.primary,
     textAlign: 'center',
     marginBottom: 16,
   },
@@ -249,6 +302,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.primary,
     marginBottom: 4,
+    marginTop: 16,
   },
   salmoSubtitle: {
     fontSize: 16,
@@ -282,10 +336,29 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     textAlign: 'justify',
   },
-  italicText: {
+  cita: {
+    fontSize: 14,
+    color: Colors.error,
+    marginBottom: 8,
+  },
+  estrofa: {
+    marginBottom: 16,
+  },
+  antifonaGrupo: {
+    marginBottom: 24,
+  },
+  antifonaNumero: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Colors.error,
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  antifonaTexto: {
     fontSize: 16,
-    fontStyle: 'italic',
     color: Colors.text,
-    marginVertical: 8,
+    textAlign: 'center',
+    marginBottom: 4,
+    lineHeight: 24,
   },
 }); 
