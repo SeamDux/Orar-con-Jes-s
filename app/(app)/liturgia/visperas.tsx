@@ -32,22 +32,22 @@ export default function VisperasScreen() {
             <Text style={styles.text}>Dios de la luz, presencia ardiente</Text>
             <Text style={styles.text}>sin meridiano ni frontera:</Text>
             <Text style={styles.text}>vuelves la noche mediodía,</Text>
-            <Text style={styles.text}>ciegas al sol con tu derecha.</Text>
+            <Text style={styles.text}>ciegas al sol con tu derecha.{'\n\n'}</Text>
 
             <Text style={styles.text}>Como columna de la aurora,</Text>
             <Text style={styles.text}>iba en la noche tu grandeza;</Text>
             <Text style={styles.text}>te vio el desierto, y destilaron</Text>
-            <Text style={styles.text}>luz de tu gloria las arenas.</Text>
+            <Text style={styles.text}>luz de tu gloria las arenas.{'\n\n'}</Text>
 
             <Text style={styles.text}>Cerró la noche sobre Egipto</Text>
             <Text style={styles.text}>como cilicio de tinieblas;</Text>
             <Text style={styles.text}>para tu pueblo amanecías</Text>
-            <Text style={styles.text}>bajo los techos de las tiendas.</Text>
+            <Text style={styles.text}>bajo los techos de las tiendas.{'\n\n'}</Text>
 
             <Text style={styles.text}>Eres la luz, pero en tu rayo</Text>
             <Text style={styles.text}>lanzas el día a la tiniebla:</Text>
             <Text style={styles.text}>ciegas los ojos del soberbio,</Text>
-            <Text style={styles.text}>curas al pobre su ceguera.</Text>
+            <Text style={styles.text}>curas al pobre su ceguera.{'\n\n'}</Text>
 
             <Text style={styles.text}>Cristo Jesús, tú que trajiste</Text>
             <Text style={styles.text}>fuego a la entraña de la tierra,</Text>
@@ -63,28 +63,28 @@ export default function VisperasScreen() {
             <Text style={styles.salmoSubtitle}>El Mesías, rey y sacerdote</Text>
 
             <Text style={styles.text}>Él debe reinar hasta poner todos sus</Text>
-            <Text style={styles.text}>enemigos bajo sus pies. (1Co 15,25)</Text>
+            <Text style={styles.text}>enemigos bajo sus pies. (1Co 15,25){'\n\n'}</Text>
 
             <Text style={styles.text}>Oráculo del Señor a mi Señor:</Text>
             <Text style={styles.text}>"Siéntate a mi derecha,</Text>
             <Text style={styles.text}>y haré de tus enemigos</Text>
-            <Text style={styles.text}>estrado de tus pies."</Text>
+            <Text style={styles.text}>estrado de tus pies."{'\n\n'}</Text>
 
             <Text style={styles.text}>Desde Sión extenderá el Señor</Text>
             <Text style={styles.text}>el poder de tu cetro:</Text>
-            <Text style={styles.text}>somete en la batalla a tus enemigos.</Text>
+            <Text style={styles.text}>somete en la batalla a tus enemigos.{'\n\n'}</Text>
 
             <Text style={styles.text}>"Eres príncipe desde el día de tu nacimiento,</Text>
             <Text style={styles.text}>entre esplendores sagrados;</Text>
             <Text style={styles.text}>yo mismo te engendré, como rocío,</Text>
-            <Text style={styles.text}>antes de la aurora."</Text>
+            <Text style={styles.text}>antes de la aurora."{'\n\n'}</Text>
 
             <Text style={styles.text}>El Señor lo ha jurado y no se arrepiente:</Text>
             <Text style={styles.text}>"Tú eres sacerdote eterno</Text>
-            <Text style={styles.text}>según el rito de Melquisedec."</Text>
+            <Text style={styles.text}>según el rito de Melquisedec."{'\n\n'}</Text>
 
             <Text style={styles.text}>El Señor a tu derecha, el día de su ira,</Text>
-            <Text style={styles.text}>quebrantará a los reyes.</Text>
+            <Text style={styles.text}>quebrantará a los reyes.{'\n\n'}</Text>
 
             <Text style={styles.text}>En su camino beberá del torrente,</Text>
             <Text style={styles.text}>por eso levantará la cabeza.</Text>
@@ -100,22 +100,22 @@ export default function VisperasScreen() {
 
             <Text style={styles.text}>Reconoced que también vosotros,</Text>
             <Text style={styles.text}>los que renunciasteis al mundo, ha-</Text>
-            <Text style={styles.text}>béis salido de Egipto. (S. Agustín)</Text>
+            <Text style={styles.text}>béis salido de Egipto. (S. Agustín){'\n\n'}</Text>
 
             <Text style={styles.text}>Cuando Israel salió de Egipto,</Text>
             <Text style={styles.text}>los hijos de Jacob de un pueblo balbuciente,</Text>
             <Text style={styles.text}>Judá fue su santuario,</Text>
-            <Text style={styles.text}>Israel fue su dominio.</Text>
+            <Text style={styles.text}>Israel fue su dominio.{'\n\n'}</Text>
 
             <Text style={styles.text}>El mar, al verlos, huyó,</Text>
             <Text style={styles.text}>el Jordán se echó atrás;</Text>
             <Text style={styles.text}>los montes saltaron como carneros;</Text>
-            <Text style={styles.text}>las colinas, como corderos.</Text>
+            <Text style={styles.text}>las colinas, como corderos.{'\n\n'}</Text>
 
             <Text style={styles.text}>¿Qué te pasa, mar, que huyes,</Text>
             <Text style={styles.text}>y a ti, Jordán, que te echas atrás?</Text>
             <Text style={styles.text}>¿Y a vosotros, montes, que saltáis como carneros;</Text>
-            <Text style={styles.text}>colinas, que saltáis como corderos?</Text>
+            <Text style={styles.text}>colinas, que saltáis como corderos?{'\n\n'}</Text>
 
             <Text style={styles.text}>En presencia del Señor se estremece la tierra,</Text>
             <Text style={styles.text}>en presencia del Dios de Jacob;</Text>
@@ -137,26 +137,26 @@ export default function VisperasScreen() {
             <Text style={styles.text}>La salvación y la gloria y el poder son de nuestro Dios.</Text>
             <Text style={styles.respuesta}>(R. Aleluya)</Text>
             <Text style={styles.text}>Porque sus juicios son verdaderos y justos.</Text>
-            <Text style={styles.respuesta}>R. Aleluya, (aleluya).</Text>
+            <Text style={styles.respuesta}>R. Aleluya, (aleluya).{'\n\n'}</Text>
 
             <Text style={styles.text}>Aleluya.</Text>
             <Text style={styles.text}>Alabad al Señor, sus siervos todos.</Text>
             <Text style={styles.respuesta}>(R. Aleluya)</Text>
             <Text style={styles.text}>Los que le teméis, pequeños y grandes.</Text>
-            <Text style={styles.respuesta}>R. Aleluya, (aleluya).</Text>
+            <Text style={styles.respuesta}>R. Aleluya, (aleluya).{'\n\n'}</Text>
 
             <Text style={styles.text}>Aleluya.</Text>
             <Text style={styles.text}>Porque reina el Señor, nuestro Dios, dueño de todo.</Text>
-            <Text style={styles.respuesta}>(R. Aleluya.)</Text>
+            <Text style={styles.respuesta}>(R. Aleluya.){'\n\n'}</Text>
 
             <Text style={styles.text}>Alegrémonos y gocemos y démosle gracias.</Text>
-            <Text style={styles.respuesta}>R. Aleluya, (aleluya).</Text>
+            <Text style={styles.respuesta}>R. Aleluya, (aleluya).{'\n\n'}</Text>
 
             <Text style={styles.text}>Aleluya.</Text>
             <Text style={styles.text}>Llegó la boda del Cordero.</Text>
             <Text style={styles.respuesta}>(R. Aleluya.)</Text>
             <Text style={styles.text}>Su esposa se ha embellecido.</Text>
-            <Text style={styles.respuesta}>R. Aleluya, (aleluya).</Text>
+            <Text style={styles.respuesta}>R. Aleluya, (aleluya).{'\n\n'}</Text>
 
             <Text style={styles.antifona}>Ant. 3: Reina el Señor, nuestro Dios, dueño de todo. Aleluya.</Text>
           </View>
@@ -190,20 +190,20 @@ export default function VisperasScreen() {
 
             <Text style={styles.text}>Proclama mi alma la grandeza del Señor,</Text>
             <Text style={styles.text}>se alegra mi espíritu en Dios mi salvador;</Text>
-            <Text style={styles.text}>porque ha mirado la humillación de su esclava.</Text>
+            <Text style={styles.text}>porque ha mirado la humillación de su esclava.{'\n\n'}</Text>
 
             <Text style={styles.text}>Desde ahora me felicitarán todas las generaciones,</Text>
             <Text style={styles.text}>porque el Poderoso ha hecho obras grandes por mí:</Text>
             <Text style={styles.text}>su nombre es santo,</Text>
             <Text style={styles.text}>y su misericordia llega a sus fieles</Text>
-            <Text style={styles.text}>de generación en generación.</Text>
+            <Text style={styles.text}>de generación en generación.{'\n\n'}</Text>
 
             <Text style={styles.text}>Él hace proezas con su brazo:</Text>
             <Text style={styles.text}>dispersa a los soberbios de corazón,</Text>
             <Text style={styles.text}>derrama del trono a los poderosos</Text>
             <Text style={styles.text}>y enaltece a los humildes,</Text>
             <Text style={styles.text}>a los hambrientos los colma de bienes</Text>
-            <Text style={styles.text}>y a los ricos los despide vacíos.</Text>
+            <Text style={styles.text}>y a los ricos los despide vacíos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Auxilia a Israel, su siervo,</Text>
             <Text style={styles.text}>acordándose de su misericordia</Text>
@@ -220,25 +220,24 @@ export default function VisperasScreen() {
 
             <Text style={styles.versiculo}>Venga a nosotros tu reino, Señor.</Text>
 
-            <Text style={styles.text}>Señor, amigo de los hombres, haz de tu Iglesia instrumento</Text>
-            <Text style={styles.text}>de concordia y unidad entre ellos y signo de salvación para todos</Text>
-            <Text style={styles.text}>los pueblos.</Text>
+            <Text style={styles.text}>Señor, amigo de los hombres, haz de tu Iglesia instrumento de concordia y unidad entre ellos y signo de salvación</Text>
+            <Text style={styles.versiculo}>- para todos los pueblos reine la justicia y el bienestar</Text>
+            
 
-            <Text style={styles.text}>Protege con tu brazo poderoso al Papa y a todos los obispos y</Text>
-            <Text style={styles.text}>concédeles trabajar en unidad, amor y paz.</Text>
+            <Text style={styles.text}>Protege con tu brazo poderoso al Papa y a todos los obispos</Text>
+            <Text style={styles.versiculo}>- y concédeles trabajar en unidad, amor y paz.</Text>
 
-            <Text style={styles.text}>A los cristianos concédenos vivir íntimamente unidos a ti,</Text>
-            <Text style={styles.text}>nuestro Maestro, y dar testimonio en nuestras vidas de la llegada</Text>
-            <Text style={styles.text}>de tu reino.</Text>
+            <Text style={styles.text}>A los cristianos concédenos vivir íntimamente unidos a ti, nuestro maestro</Text>
+            <Text style={styles.versiculo}>- y dar testimonio en nuestras vidas de la llegada de tu reino</Text>
 
-            <Text style={styles.text}>Concede, Señor, al mundo el don de la paz y haz que en todos</Text>
-            <Text style={styles.text}>los pueblos reine la justicia y el bienestar.</Text>
 
-            <Text style={styles.italicText}>Se pueden añadir algunas intenciones libres.</Text>
+            <Text style={styles.text}>Concede, Señor, al mundo el don de la paz,</Text>
+            <Text style={styles.versiculo}>- y haz que en todos los pueblos reine la justicia y el bienestar.</Text>
 
-            <Text style={styles.text}>Otorga, a los que han muerto, una resurrección gloriosa y haz</Text>
-            <Text style={styles.text}>que los que aún vivimos en este mundo gocemos un día con ellos</Text>
-            <Text style={styles.text}>de la felicidad eterna.</Text>
+            <Text style={styles.salmoSubtitle}>Se pueden añadir algunas intenciones libres.</Text>
+
+            <Text style={styles.text}>Otorga, a los que han muerto, una resurrección gloriosa,</Text>
+            <Text style={styles.versiculo}>- y haz que los que aún vivimos en este mundo gocemos un día con ellos de la felicidad eterna</Text>
           </View>
 
           <View style={styles.section}>
@@ -311,7 +310,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: Colors.text,
-    marginBottom: 8,
+    marginBottom: 3,
     textAlign: 'justify',
     lineHeight: 24,
   },

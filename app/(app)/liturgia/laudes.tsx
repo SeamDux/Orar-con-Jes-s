@@ -43,22 +43,22 @@ export default function LaudesScreen() {
             <Text style={styles.text}>Es verdad que las luces del alba</Text>
             <Text style={styles.text}>del día de hoy</Text>
             <Text style={styles.text}>son más puras, radiantes y bellas,</Text>
-            <Text style={styles.text}>por gracia de Dios.</Text>
+            <Text style={styles.text}>por gracia de Dios.{'\n\n'}</Text>
             
             <Text style={styles.text}>Es verdad que yo siento en mi vida,</Text>
             <Text style={styles.text}>muy dentro de mí,</Text>
             <Text style={styles.text}>que la gracia de Dios es mi gracia,</Text>
-            <Text style={styles.text}>que no merecí.</Text>
+            <Text style={styles.text}>que no merecí.{'\n\n'}</Text>
 
             <Text style={styles.text}>Es verdad que la gracia del Padre,</Text>
             <Text style={styles.text}>en Cristo Jesús,</Text>
             <Text style={styles.text}>es la gloria del hombre y del mundo</Text>
-            <Text style={styles.text}>bañados en luz.</Text>
+            <Text style={styles.text}>bañados en luz.{'\n\n'}</Text>
 
             <Text style={styles.text}>Es verdad que la Pascua de Cristo</Text>
             <Text style={styles.text}>es pascua por mí,</Text>
             <Text style={styles.text}>que su muerte y victoria me dieron</Text>
-            <Text style={styles.text}>eterno vivir.</Text>
+            <Text style={styles.text}>eterno vivir.{'\n\n'}</Text>
 
             <Text style={styles.text}>Viviré en alabanzas al Padre,</Text>
             <Text style={styles.text}>que al Hijo nos dio,</Text>
@@ -74,22 +74,22 @@ export default function LaudesScreen() {
             <Text style={styles.salmoSubtitle}>El alma sedienta de Dios</Text>
 
             <Text style={styles.text}>Madruga por Dios todo el que</Text>
-            <Text style={styles.text}>rechaza las obras de las tinieblas</Text>
+            <Text style={styles.text}>rechaza las obras de las tinieblas.{'\n\n'}</Text>
 
             <Text style={styles.text}>¡Oh Dios!, tú eres mi Dios, por ti madrugo,</Text>
             <Text style={styles.text}>mi alma está sedienta de ti;</Text>
             <Text style={styles.text}>mi carne tiene ansia de ti,</Text>
-            <Text style={styles.text}>como tierra reseca, agostada, sin agua.</Text>
+            <Text style={styles.text}>como tierra reseca, agostada, sin agua.{'\n\n'}</Text>
 
             <Text style={styles.text}>¡Cómo te contemplaba en el santuario</Text>
             <Text style={styles.text}>viendo tu fuerza y tu gloria!</Text>
             <Text style={styles.text}>Tu gracia vale más que la vida,</Text>
-            <Text style={styles.text}>te alabarán mis labios.</Text>
+            <Text style={styles.text}>te alabarán mis labios.{'\n\n'}</Text>
 
             <Text style={styles.text}>Toda mi vida te bendeciré</Text>
             <Text style={styles.text}>y alzaré las manos invocándote.</Text>
             <Text style={styles.text}>Me saciaré de manjares exquisitos,</Text>
-            <Text style={styles.text}>y mis labios te alabarán jubilosos.</Text>
+            <Text style={styles.text}>y mis labios te alabarán jubilosos.{'\n\n'}</Text>
 
             <Text style={styles.text}>En el lecho me acuerdo de ti</Text>
             <Text style={styles.text}>y velando medito en ti,</Text>
@@ -107,69 +107,69 @@ export default function LaudesScreen() {
             <Text style={styles.sectionTitle}>Cántico Dn 3, 57-88. 56</Text>
             <Text style={styles.salmoSubtitle}>Toda la creación alabe al Señor</Text>
 
-            <Text style={styles.text}>Alabad al Señor sus siervos todos. (Ap 19, 5)</Text>
+            <Text style={styles.text}>Alabad al Señor sus siervos todos. (Ap 19, 5){'\n\n'}</Text>
             
             <Text style={styles.text}>Creaturas todas del Señor, bendecid al Señor,</Text>
-            <Text style={styles.text}>ensalzadlo con himnos por los siglos.</Text>
+            <Text style={styles.text}>ensalzadlo con himnos por los siglos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Ángeles del Señor, bendecid al Señor;</Text>
-            <Text style={styles.text}>cielos, bendecid al Señor.</Text>
+            <Text style={styles.text}>cielos, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Aguas del espacio, bendecid al Señor;</Text>
-            <Text style={styles.text}>ejércitos del Señor, bendecid al Señor.</Text>
+            <Text style={styles.text}>ejércitos del Señor, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Sol y luna, bendecid al Señor;</Text>
-            <Text style={styles.text}>astros del cielo, bendecid al Señor.</Text>
+            <Text style={styles.text}>astros del cielo, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Lluvia y rocío, bendecid al Señor;</Text>
-            <Text style={styles.text}>vientos todos, bendecid al Señor.</Text>
+            <Text style={styles.text}>vientos todos, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Fuego y calor, bendecid al Señor;</Text>
-            <Text style={styles.text}>fríos y heladas, bendecid al Señor.</Text>
+            <Text style={styles.text}>fríos y heladas, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Rocíos y nevadas, bendecid al Señor;</Text>
-            <Text style={styles.text}>témpanos y hielos, bendecid al Señor.</Text>
+            <Text style={styles.text}>témpanos y hielos, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Escarchas y nieves, bendecid al Señor;</Text>
-            <Text style={styles.text}>noche y día, bendecid al Señor.</Text>
+            <Text style={styles.text}>noche y día, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Luz y tinieblas, bendecid al Señor;</Text>
-            <Text style={styles.text}>rayos y nubes, bendecid al Señor.</Text>
+            <Text style={styles.text}>rayos y nubes, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Bendiga la tierra al Señor,</Text>
-            <Text style={styles.text}>ensálcelo con himnos por los siglos.</Text>
+            <Text style={styles.text}>ensálcelo con himnos por los siglos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Montes y cumbres, bendecid al Señor;</Text>
-            <Text style={styles.text}>cuanto germina en la tierra, bendiga al Señor.</Text>
+            <Text style={styles.text}>cuanto germina en la tierra, bendiga al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Manantiales, bendecid al Señor;</Text>
-            <Text style={styles.text}>mares y ríos, bendecid al Señor.</Text>
+            <Text style={styles.text}>mares y ríos, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Cetáceos y peces, bendecid al Señor;</Text>
-            <Text style={styles.text}>aves del cielo, bendecid al Señor.</Text>
+            <Text style={styles.text}>aves del cielo, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Fieras y ganados, bendecid al Señor,</Text>
-            <Text style={styles.text}>ensalzadlo con himnos por los siglos.</Text>
+            <Text style={styles.text}>ensalzadlo con himnos por los siglos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Hijos de los hombres, bendecid al Señor;</Text>
-            <Text style={styles.text}>bendiga Israel al Señor.</Text>
+            <Text style={styles.text}>bendiga Israel al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Sacerdotes del Señor, bendecid al Señor;</Text>
-            <Text style={styles.text}>siervos del Señor, bendecid al Señor.</Text>
+            <Text style={styles.text}>siervos del Señor, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Almas y espíritus justos, bendecid al Señor;</Text>
-            <Text style={styles.text}>santos y humildes de corazón, bendecid al Señor.</Text>
+            <Text style={styles.text}>santos y humildes de corazón, bendecid al Señor.{'\n\n'}</Text>
 
             <Text style={styles.text}>Ananías, Azarías y Misael, bendecid al Señor,</Text>
-            <Text style={styles.text}>ensalzadlo con himnos por los siglos.</Text>
+            <Text style={styles.text}>ensalzadlo con himnos por los siglos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Bendigamos al Padre, y al Hijo y al Espíritu Santo,</Text>
-            <Text style={styles.text}>ensalcémoslo con himnos por los siglos.</Text>
+            <Text style={styles.text}>ensalcémoslo con himnos por los siglos.{'\n\n'}</Text>
 
             <Text style={styles.text}>Bendito el Señor en la bóveda del cielo,</Text>
-            <Text style={styles.text}>alabado y glorioso y ensalzado por los siglos.</Text>
+            <Text style={styles.text}>alabado y glorioso y ensalzado por los siglos.{'\n\n'}</Text>
 
-            <Text style={styles.italicText}>No se dice Gloria al Padre</Text>
+            <Text style={styles.salmoSubtitle}>No se dice Gloria al Padre</Text>
 
             <Text style={styles.antifona}>Ant. 2: En medio de las llamas, los tres jóvenes unánimes cantaban: "Bendito sea el Señor". Aleluya.</Text>
 
@@ -185,25 +185,25 @@ export default function LaudesScreen() {
             <Text style={styles.text}>Cantad al Señor un cántico nuevo,</Text>
             <Text style={styles.text}>resuene su alabanza en la asamblea de los fieles;</Text>
             <Text style={styles.text}>que se alegre Israel por su Creador,</Text>
-            <Text style={styles.text}>los hijos de Sión por su Rey.</Text>
+            <Text style={styles.text}>los hijos de Sión por su Rey.{'\n\n'}</Text>
 
             <Text style={styles.text}>Alabad su nombre con danzas,</Text>
             <Text style={styles.text}>cantadle con tambores y cítaras;</Text>
             <Text style={styles.text}>porque el Señor ama a su pueblo</Text>
-            <Text style={styles.text}>y adorna con la victoria a los humildes.</Text>
+            <Text style={styles.text}>y adorna con la victoria a los humildes.{'\n\n'}</Text>
 
             <Text style={styles.text}>Que los fieles festejen su gloria</Text>
             <Text style={styles.text}>y canten jubilosos en filas:</Text>
             <Text style={styles.text}>con vítores a Dios en la boca</Text>
-            <Text style={styles.text}>y espadas de dos filos en las manos:</Text>
+            <Text style={styles.text}>y espadas de dos filos en las manos:{'\n\n'}</Text>
 
             <Text style={styles.text}>para tomar venganza de los pueblos</Text>
             <Text style={styles.text}>y aplicar el castigo a las naciones,</Text>
             <Text style={styles.text}>sujetando a los reyes con argollas,</Text>
-            <Text style={styles.text}>a los nobles con esposas de hierro.</Text>
+            <Text style={styles.text}>a los nobles con esposas de hierro.{'\n\n'}</Text>
 
             <Text style={styles.text}>Ejecutar la sentencia dictada</Text>
-            <Text style={styles.text}>es un honor para todos sus fieles.</Text>
+            <Text style={styles.text}>es un honor para todos sus fieles.{'\n\n'}</Text>
 
             <Text style={styles.text}>Gloria al Padre, y al Hijo, y al Espíritu Santo.</Text>
             <Text style={styles.text}>Como era en el principio, ahora y siempre,</Text>
@@ -243,31 +243,31 @@ export default function LaudesScreen() {
             <Text style={styles.text}>suscitándonos una fuerza de salvación</Text>
             <Text style={styles.text}>en la casa de David, su siervo,</Text>
             <Text style={styles.text}>según lo había predicho desde antiguo</Text>
-            <Text style={styles.text}>por boca de sus santos profetas.</Text>
+            <Text style={styles.text}>por boca de sus santos profetas.{'\n\n'}</Text>
 
             <Text style={styles.text}>Es la salvación que nos libra de nuestros enemigos</Text>
             <Text style={styles.text}>y de la mano de todos los que nos odian;</Text>
             <Text style={styles.text}>realizando la misericordia que tuvo con nuestros padres,</Text>
             <Text style={styles.text}>recordando su santa alianza</Text>
-            <Text style={styles.text}>y el juramento que juró a nuestro padre Abrahán.</Text>
+            <Text style={styles.text}>y el juramento que juró a nuestro padre Abrahán.{'\n\n'}</Text>
 
             <Text style={styles.text}>Para concedernos que, libres de temor,</Text>
             <Text style={styles.text}>arrancados de la mano de los enemigos,</Text>
             <Text style={styles.text}>le sirvamos con santidad y justicia,</Text>
-            <Text style={styles.text}>en su presencia, todos nuestros días.</Text>
+            <Text style={styles.text}>en su presencia, todos nuestros días.{'\n\n'}</Text>
 
             <Text style={styles.text}>Y a ti, niño, te llamarán profeta del Altísimo,</Text>
             <Text style={styles.text}>porque irás delante del Señor</Text>
             <Text style={styles.text}>a preparar sus caminos,</Text>
             <Text style={styles.text}>anunciando a su pueblo la salvación,</Text>
-            <Text style={styles.text}>el perdón de sus pecados.</Text>
+            <Text style={styles.text}>el perdón de sus pecados.{'\n\n'}</Text>
 
             <Text style={styles.text}>Por la entrañable misericordia de nuestro Dios,</Text>
             <Text style={styles.text}>nos visitará el sol que nace de lo alto,</Text>
             <Text style={styles.text}>para iluminar a los que viven en tinieblas</Text>
             <Text style={styles.text}>y en sombra de muerte,</Text>
             <Text style={styles.text}>para guiar nuestros pasos</Text>
-            <Text style={styles.text}>por el camino de la paz.</Text>
+            <Text style={styles.text}>por el camino de la paz.{'\n\n'}</Text>
 
             <Text style={styles.text}>Gloria al Padre, y al Hijo, y al Espíritu Santo.</Text>
             <Text style={styles.text}>Como era en el principio, ahora y siempre,</Text>
@@ -388,7 +388,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: Colors.text,
-    marginBottom: 8,
+    marginBottom: 3,
     textAlign: 'justify',
     lineHeight: 24,
   },

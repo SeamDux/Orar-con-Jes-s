@@ -97,42 +97,42 @@ export default function CompletasScreen() {
             <Text style={styles.salmoSubtitle}>A la sombra del Omnipotente</Text>
 
             <Text style={styles.text}>Os he dado potestad para pisotear</Text>
-            <Text style={styles.text}>serpientes y escorpiones. (Lc 10,19)</Text>
+            <Text style={styles.text}>serpientes y escorpiones. (Lc 10,19){'\n\n'}</Text>
 
             <Text style={styles.text}>Tú que habitas al amparo del Altísimo,</Text>
             <Text style={styles.text}>que vives a la sombra del Omnipotente,</Text>
             <Text style={styles.text}>di al Señor: «Refugio mío, alcázar mío,</Text>
-            <Text style={styles.text}>Dios mío, confío en ti».</Text>
+            <Text style={styles.text}>Dios mío, confío en ti».{'\n\n'}</Text>
 
             <Text style={styles.text}>Él te librará de la red del cazador,</Text>
             <Text style={styles.text}>de la peste funesta.</Text>
             <Text style={styles.text}>Te cubrirá con sus plumas,</Text>
             <Text style={styles.text}>bajo sus alas te refugiarás:</Text>
-            <Text style={styles.text}>su brazo es escudo y armadura.</Text>
+            <Text style={styles.text}>su brazo es escudo y armadura.{'\n\n'}</Text>
 
             <Text style={styles.text}>No temerás el espanto nocturno,</Text>
             <Text style={styles.text}>ni la flecha que vuela de día,</Text>
             <Text style={styles.text}>ni la peste que se desliza en las tinieblas,</Text>
-            <Text style={styles.text}>ni la epidemia que devasta a mediodía.</Text>
+            <Text style={styles.text}>ni la epidemia que devasta a mediodía.{'\n\n'}</Text>
 
             <Text style={styles.text}>Caerán a tu izquierda mil,</Text>
             <Text style={styles.text}>diez mil a tu derecha;</Text>
-            <Text style={styles.text}>a ti no te alcanzará.</Text>
+            <Text style={styles.text}>a ti no te alcanzará.{'\n\n'}</Text>
 
             <Text style={styles.text}>Tan sólo abre tus ojos</Text>
             <Text style={styles.text}>y verás la paga de los malvados,</Text>
             <Text style={styles.text}>porque hiciste del Señor tu refugio,</Text>
-            <Text style={styles.text}>tomaste al Altísimo por defensa.</Text>
+            <Text style={styles.text}>tomaste al Altísimo por defensa.{'\n\n'}</Text>
 
             <Text style={styles.text}>No se te acercará la desgracia,</Text>
             <Text style={styles.text}>ni la plaga llegará hasta tu tienda,</Text>
             <Text style={styles.text}>porque a sus ángeles ha dado órdenes</Text>
-            <Text style={styles.text}>para que te guarden en tus caminos;</Text>
+            <Text style={styles.text}>para que te guarden en tus caminos;{'\n\n'}</Text>
 
             <Text style={styles.text}>Te llevarán en sus palmas,</Text>
             <Text style={styles.text}>para que tu pie no tropiece en la piedra;</Text>
             <Text style={styles.text}>caminarás sobre áspides y víboras,</Text>
-            <Text style={styles.text}>pisotearás leones y dragones.</Text>
+            <Text style={styles.text}>pisotearás leones y dragones.{'\n\n'}</Text>
 
             <Text style={styles.text}>«Se puso junto a mí: lo libraré;</Text>
             <Text style={styles.text}>lo protegeré porque conoce mi nombre,</Text>
@@ -174,10 +174,10 @@ export default function CompletasScreen() {
             <Text style={styles.salmoSubtitle}>Cristo, luz de las naciones y gloria de Israel</Text>
 
             <Text style={styles.text}>Ahora, Señor, según tu promesa,</Text>
-            <Text style={styles.text}>puedes dejar a tu siervo irse en paz,</Text>
+            <Text style={styles.text}>puedes dejar a tu siervo irse en paz,{'\n\n'}</Text>
 
             <Text style={styles.text}>porque mis ojos han visto a tu Salvador,</Text>
-            <Text style={styles.text}>a quien has presentado ante todos los pueblos:</Text>
+            <Text style={styles.text}>a quien has presentado ante todos los pueblos:{'\n\n'}</Text>
 
             <Text style={styles.text}>luz para alumbrar a las naciones</Text>
             <Text style={styles.text}>y gloria de tu pueblo Israel.</Text>
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: Colors.text,
-    marginBottom: 8,
+    marginBottom: 2,
     textAlign: 'justify',
     lineHeight: 24,
   },
