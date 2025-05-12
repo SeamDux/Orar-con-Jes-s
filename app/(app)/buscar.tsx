@@ -211,6 +211,17 @@ const searchData: SearchItem[] = [
     keywords: ['memorias', 'ferias', 'dias', 'semana', 'liturgia']
   },
 
+
+  // Oracion del Jubileo 2025
+
+  {
+    title: 'Oracion del Jubileo de la Esperanza 2025',
+    route: '(app)/jubileo',
+    category: 'Jubileo 2025',
+    keywords: ['indulgencia', 'jubileo', 'esperanza']
+  },
+
+
   // Oraciones por los Difuntos
   {
     title: 'Letanías para la Buena Muerte',

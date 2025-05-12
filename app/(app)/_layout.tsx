@@ -67,6 +67,12 @@ export default function AppLayout() {
         }}
       />
       <Stack.Screen 
+        name="jubileo"
+        options={{
+          title: 'Jubileo de la Esperanza 2025',
+        }}
+      />
+      <Stack.Screen 
         name="devociones-espiritu"
         options={{
           title: 'Devociones al Espíritu Santo',

@@ -38,6 +38,11 @@ const opciones: OpcionMenu[] = [
     icono: 'church'
   },
   {
+    titulo: 'Jubileo de la Esperanza 2025',
+    ruta: 'jubileo',
+    icono: 'church'
+  },
+  {
     titulo: 'Devociones a la Virgen María',
     ruta: 'devociones-maria',
     icono: 'account-heart'
@@ -81,6 +86,13 @@ export default function HomeScreen() {
             <Pressable style={styles.menuItem}>
               <MaterialCommunityIcons name="hands-pray" size={24} color={Colors.primary} />
               <Text style={styles.menuText}>Oraciones Diversas</Text>
+            </Pressable>
+          </Link>
+
+          <Link href="/jubileo" asChild>
+            <Pressable style={styles.menuItem}>
+              <MaterialCommunityIcons name="church" size={24} color={Colors.primary} />
+              <Text style={styles.menuText}>Jubileo de la Esperanza 2025</Text>
             </Pressable>
           </Link>
 
