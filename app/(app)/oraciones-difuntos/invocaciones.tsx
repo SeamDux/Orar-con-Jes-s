@@ -155,7 +155,7 @@ export default function InvocacionesScreen() {
 
           <Pressable 
             style={styles.button}
-            onPress={() => router.back()}
+            onPress={() => router.replace('/(app)/oraciones-difuntos')}
           >
             <Text style={styles.buttonText}>Volver al listado</Text>
           </Pressable>

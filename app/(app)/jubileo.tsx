@@ -3,10 +3,11 @@ import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import { Stack } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { StatusBar } from 'expo-status-bar';
+import Background from '../../components/Background';
 
 export default function JubileoScreen() {
   return (
-    <View style={styles.container}>
+    <Background imageSource={require('../../assets/images/jubileo-background.png')}>
       <Stack.Screen
         options={{
           title: 'Jubileo de la Esperanza 2025',
@@ -48,15 +49,11 @@ export default function JubileoScreen() {
           </Text>
         </BlurView>
       </ScrollView>
-    </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
   scrollView: {
     flex: 1,
   },
