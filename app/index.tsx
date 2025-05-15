@@ -103,6 +103,13 @@ export default function HomePage() {
             </TouchableOpacity>
           </Link>
 
+          <Link href="/(app)/noticias" asChild>
+            <TouchableOpacity style={styles.menuItem}>
+              <MaterialCommunityIcons name="newspaper" size={32} color={Colors.primary} />
+              <Text style={styles.menuText}>Noticias de la Diocesis</Text>
+            </TouchableOpacity>
+          </Link>
+
           <Link href="/(app)/adoracion" asChild>
             <TouchableOpacity style={styles.menuItem}>
               <Ionicons name="sunny" size={32} color={Colors.primary} />

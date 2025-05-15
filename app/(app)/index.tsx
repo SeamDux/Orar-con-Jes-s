@@ -96,6 +96,13 @@ export default function HomeScreen() {
             </Pressable>
           </Link>
 
+          <Link href="/noticias" asChild>
+            <Pressable style={styles.menuItem}>
+              <MaterialCommunityIcons name="newspaper" size={24} color={Colors.primary} />
+              <Text style={styles.menuText}>Noticias de la Diocesis</Text>
+            </Pressable>
+          </Link>
+
           <TouchableOpacity 
             style={styles.menuItem}
             onPress={() => router.push('/oraciones-siempre')}
