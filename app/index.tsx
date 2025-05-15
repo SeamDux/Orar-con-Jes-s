@@ -68,17 +68,17 @@ export default function HomePage() {
             </TouchableOpacity>
           </Link>
 
-          <Link href="/(app)/evangelio" asChild>
-            <TouchableOpacity style={styles.menuItem}>
-              <MaterialCommunityIcons name="cross" size={32} color={Colors.primary} />
-              <Text style={styles.menuText}>Evangelio del Día</Text>
-            </TouchableOpacity>
-          </Link>
-
           <Link href="/(app)/liturgia" asChild>
             <TouchableOpacity style={styles.menuItem}>
               <MaterialCommunityIcons name="clock-outline" size={32} color={Colors.primary} />
               <Text style={styles.menuText}>Liturgia de las Horas</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/(app)/oficio-del-dia" asChild>
+            <TouchableOpacity style={styles.menuItem}>
+              <MaterialCommunityIcons name="book-open-variant" size={32} color={Colors.primary} />
+              <Text style={styles.menuText}>Oficio del Día</Text>
             </TouchableOpacity>
           </Link>
 
@@ -93,13 +93,6 @@ export default function HomePage() {
             <TouchableOpacity style={styles.menuItem}>
               <MaterialCommunityIcons name="bread-slice" size={32} color={Colors.primary} />
               <Text style={styles.menuText}>La Santa Misa</Text>
-            </TouchableOpacity>
-          </Link>
-
-          <Link href="/(app)/santo" asChild>
-            <TouchableOpacity style={styles.menuItem}>
-              <MaterialCommunityIcons name="church" size={32} color={Colors.primary} />
-              <Text style={styles.menuText}>Santo del Día</Text>
             </TouchableOpacity>
           </Link>
 

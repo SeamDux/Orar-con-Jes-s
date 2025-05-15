@@ -1,0 +1,363 @@
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Linking, RefreshControl, Image } from 'react-native';
+import { Text, View } from '../../components/Themed';
+import Colors from '../../constants/Colors';
+import { Stack } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as rssParser from 'react-native-rss-parser';
+
+interface OficioItem {
+  title: string;
+  link: string;
+  description: string;
+  pubDate: string;
+  content: string;
+  audioLinks: string[];
+}
+
+export default function OficioDelDiaScreen() {
+  const [oficioData, setOficioData] = useState<OficioItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [error, setError] = useState('');
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    fetchOficioDelDia().finally(() => setRefreshing(false));
+  }, []);
+
+  useEffect(() => {
+    fetchOficioDelDia();
+  }, []);
+
+  const fetchOficioDelDia = async () => {
+    try {
+      setError('');
+      console.log('Iniciando carga del oficio del día...');
+      
+      // Usar rss2json para convertir el feed RSS a JSON
+      const rss2jsonUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fbiblialiturgia.com%2Ffeed%2F';
+      
+      console.log(`Intentando con rss2json: ${rss2jsonUrl}`);
+      const response = await fetch(rss2jsonUrl);
+      
+      if (!response.ok) {
+        throw new Error(`Error HTTP ${response.status} al obtener el feed RSS`);
+      }
+      
+      const jsonData = await response.json();
+      console.log('Respuesta JSON recibida:', JSON.stringify(jsonData).substring(0, 200) + '...');
+      
+      if (jsonData.status === 'ok' && jsonData.items && jsonData.items.length > 0) {
+        // Obtener el primer item (el más reciente)
+        const item = jsonData.items[0];
+        console.log(`Título del oficio: ${item.title}`);
+        
+        // Extraer enlaces de audio del contenido
+        const content = item.content || '';
+        
+        // Extraer URLs de audio usando expresiones regulares
+        const audioRegex = /<audio[^>]*src="([^"]+)"[^>]*>/g;
+        const audioLinks: string[] = [];
+        let match;
+        
+        while ((match = audioRegex.exec(content)) !== null) {
+          if (match[1]) {
+            audioLinks.push(match[1]);
+          }
+        }
+        
+        console.log(`Enlaces de audio encontrados: ${audioLinks.length}`);
+        
+        setOficioData({
+          title: item.title || 'Oficio del Día',
+          link: item.link || '',
+          description: item.description || '',
+          pubDate: item.pubDate || '',
+          content: content,
+          audioLinks
+        });
+      } else {
+        console.error('No se encontraron items en el feed RSS o el status no es ok');
+        setError('No se encontró información del oficio del día');
+      }
+    } catch (err) {
+      console.error('Error fetching oficio del día:', err);
+      setError('No se pudo cargar el oficio del día');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const openLink = async (url: string) => {
+    await WebBrowser.openBrowserAsync(url);
+  };
+
+  const openAudio = async (url: string) => {
+    await Linking.openURL(url);
+  };
+
+  return (
+    <>
+      <Stack.Screen 
+        options={{
+          title: 'Liturgia de las Horas',
+          headerStyle: {
+            backgroundColor: Colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+      
+      {loading ? (
+        <View style={styles.centered}>
+          <ActivityIndicator size="large" color={Colors.primary} />
+          <Text style={styles.loadingText}>Cargando oficio del día...</Text>
+        </View>
+      ) : error ? (
+        <View style={styles.centered}>
+          <MaterialCommunityIcons name="alert-circle-outline" size={50} color={Colors.error} />
+          <Text style={styles.error}>{error}</Text>
+          <TouchableOpacity 
+            style={styles.retryButton}
+            onPress={() => {
+              setLoading(true);
+              fetchOficioDelDia();
+            }}
+          >
+            <Text style={styles.retryButtonText}>Intentar nuevamente</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <ScrollView 
+          style={styles.container}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
+          {oficioData ? (
+            <View style={styles.content}>
+              <Text style={styles.title}>Liturgia de las Horas</Text>
+              <Text style={styles.subtitle}>{oficioData.title}</Text>
+              <Text style={styles.date}>
+                {new Date(oficioData.pubDate).toLocaleDateString('es-ES', { 
+                  weekday: 'long',
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric'
+                })}
+              </Text>
+              
+              {/* Se ha eliminado la descripción que no tenía relación con la funcionalidad */}
+              
+              {oficioData.audioLinks && oficioData.audioLinks.length > 0 ? (
+                <>
+                  <Text style={styles.sectionTitle}>Escucha la Liturgia de las Horas:</Text>
+                  
+                  {oficioData.audioLinks.map((audioLink, index) => {
+                    // Extraer el nombre del audio desde la URL
+                    const audioName = audioLink.split('/').pop()?.split('.')[0] || `Audio ${index + 1}`;
+                    
+                    // Mapeo personalizado de nombres de archivos a títulos más descriptivos
+                    const getFormattedTitle = (fileName: string, index: number) => {
+                      // Decodificar URL para manejar caracteres especiales como %C3%AD (í)
+                      const decodedFileName = decodeURIComponent(fileName);
+                      
+                      // Mapeo de patrones comunes en los nombres de archivo a títulos legibles
+                      if (decodedFileName.includes('Invitatorio')) return 'Invitatorio';
+                      if (decodedFileName.includes('Oficio-de-Lec') || decodedFileName.includes('Oficio de Lec')) return 'Oficio de Lectura';
+                      if (decodedFileName.includes('Primera-Lec') || decodedFileName.includes('Primera Lec')) return 'Primera Lectura';
+                      if (decodedFileName.includes('Segunda-Lec') || decodedFileName.includes('Segunda Lec')) return 'Segunda Lectura';
+                      if (decodedFileName.includes('Laudes')) return 'Laudes (Oración de la mañana)';
+                      if (decodedFileName.includes('Tercia')) return 'Hora Tercia';
+                      if (decodedFileName.includes('Sexta')) return 'Hora Sexta';
+                      if (decodedFileName.includes('Nona')) return 'Hora Nona';
+                      if (decodedFileName.includes('Vísperas') || decodedFileName.includes('Visperas')) return 'Vísperas (Oración de la tarde)';
+                      if (decodedFileName.includes('Completas')) return 'Completas (Oración antes del descanso)';
+                      if (decodedFileName.includes('EVANGELIO') || decodedFileName.includes('Evangelio')) return 'Evangelio del día';
+                      if (decodedFileName.includes('Jueves')) return 'Completas (Oración antes del descanso)';
+                      
+                      // Caso especial para archivos que solo tienen números (como "5")
+                      if (/^\d+$/.test(decodedFileName) || decodedFileName.length < 3) {
+                        // Mapeo basado en la posición en la lista
+                        const hourNames = [
+                          'Hora Tercia',
+                          'Hora Sexta', 
+                          'Hora Nona'
+                        ];
+                        
+                        // Si hay tres números consecutivos, asumimos que son las horas menores
+                        const terciaSextaNonaIndex = oficioData.audioLinks.findIndex(link => 
+                          link.includes('Tercia') || link.includes('tercia')
+                        );
+                        
+                        if (terciaSextaNonaIndex !== -1) {
+                          const relativeIndex = index - terciaSextaNonaIndex;
+                          if (relativeIndex >= 0 && relativeIndex < hourNames.length) {
+                            return hourNames[relativeIndex];
+                          }
+                        }
+                        
+                        return `Hora ${index + 1}`;
+                      }
+                      
+                      // Si no coincide con ningún patrón conocido, usar el formato estándar
+                      const formattedName = decodedFileName
+                        .replace(/^\d+-/, '')
+                        .replace(/-\d+$/, '')
+                        .replace(/-/g, ' ')
+                        .replace(/(\w)(\w*)/g, (g0, g1, g2) => g1.toUpperCase() + g2);
+                      
+                      return formattedName;
+                    };
+                    
+                    const displayTitle = getFormattedTitle(audioName, index);
+                    
+                    return (
+                      <TouchableOpacity 
+                        key={index} 
+                        style={styles.audioItem}
+                        onPress={() => openAudio(audioLink)}
+                      >
+                        <MaterialCommunityIcons name="play-circle" size={24} color={Colors.primary} />
+                        <Text style={styles.audioName}>{displayTitle}</Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </>
+              ) : (
+                <Text style={styles.noAudio}>No hay audios disponibles para el día de hoy</Text>
+              )}
+              
+              <TouchableOpacity 
+                style={styles.linkButton}
+                onPress={() => openLink(oficioData.link)}
+              >
+                <Text style={styles.linkButtonText}>Ver en biblialiturgia.com</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={styles.centered}>
+              <Text style={styles.noAudio}>No hay contenido disponible</Text>
+            </View>
+          )}
+        </ScrollView>
+      )}
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.background,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: Colors.secondary,
+  },
+  content: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: Colors.primary,
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: Colors.secondary,
+    textAlign: 'center',
+    marginBottom: 15,
+    fontStyle: 'italic',
+  },
+  date: {
+    fontSize: 16,
+    color: Colors.secondary,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: 20,
+  },
+  description: {
+    fontSize: 18,
+    lineHeight: 28,
+    textAlign: 'justify',
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: Colors.primary,
+    marginTop: 25,
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  audioItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  audioName: {
+    fontSize: 16,
+    marginLeft: 10,
+    color: Colors.text,
+    fontWeight: '500',
+  },
+  linkButton: {
+    backgroundColor: Colors.primary,
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 20,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  linkButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  error: {
+    color: Colors.error,
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+    fontSize: 16,
+  },
+  retryButton: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  retryButtonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  noAudio: {
+    fontSize: 16,
+    color: Colors.secondary,
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginTop: 20,
+  },
+});
