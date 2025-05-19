@@ -21,6 +21,7 @@ export default function OficioDelDiaScreen() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -28,6 +29,20 @@ export default function OficioDelDiaScreen() {
   }, []);
 
   useEffect(() => {
+    // Establecer la fecha actual al cargar el componente
+    const today = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'America/Santiago' // Zona horaria de Chile
+    };
+    
+    // Usar 'es-ES' para mostrar los nombres de los días y meses en español
+    setCurrentDate(today.toLocaleDateString('es-ES', options));
+    
+    // Cargar el oficio del día
     fetchOficioDelDia();
   }, []);
 
@@ -141,7 +156,7 @@ export default function OficioDelDiaScreen() {
               <Text style={styles.title}>Liturgia de las Horas</Text>
               <Text style={styles.subtitle}>{oficioData.title}</Text>
               <Text style={styles.date}>
-                {new Date(oficioData.pubDate).toLocaleDateString('es-ES', { 
+                {currentDate || new Date(oficioData.pubDate).toLocaleDateString('es-ES', { 
                   weekday: 'long',
                   year: 'numeric', 
                   month: 'long', 
@@ -157,12 +172,26 @@ export default function OficioDelDiaScreen() {
                   
                   {oficioData.audioLinks.map((audioLink, index) => {
                     // Extraer el nombre del audio desde la URL
+                    console.log('URL del audio:', audioLink);
                     const audioName = audioLink.split('/').pop()?.split('.')[0] || `Audio ${index + 1}`;
+                    console.log('Nombre extraído del audio:', audioName);
                     
                     // Mapeo personalizado de nombres de archivos a títulos más descriptivos
                     const getFormattedTitle = (fileName: string, index: number) => {
                       // Decodificar URL para manejar caracteres especiales como %C3%AD (í)
                       const decodedFileName = decodeURIComponent(fileName);
+                      console.log('Nombre del archivo decodificado:', decodedFileName);
+                      
+                      // Caso específico para el patrón de Completas
+                      const lowerFileName = decodedFileName.toLowerCase();
+                      
+                      // Detectar el patrón '7-lunes-01' o variaciones
+                      if (lowerFileName.includes('7-lunes') || 
+                          lowerFileName.includes('lunes-01') ||
+                          lowerFileName.includes('lunes 01') ||
+                          lowerFileName === '7-lunes-01-1') {
+                        return 'Completas (Oración de la noche)';
+                      }
                       
                       // Mapeo de patrones comunes en los nombres de archivo a títulos legibles
                       if (decodedFileName.includes('Invitatorio')) return 'Invitatorio';
@@ -174,9 +203,9 @@ export default function OficioDelDiaScreen() {
                       if (decodedFileName.includes('Sexta')) return 'Hora Sexta';
                       if (decodedFileName.includes('Nona')) return 'Hora Nona';
                       if (decodedFileName.includes('Vísperas') || decodedFileName.includes('Visperas')) return 'Vísperas (Oración de la tarde)';
-                      if (decodedFileName.includes('Completas')) return 'Completas (Oración antes del descanso)';
+                      if (decodedFileName.includes('Completas')) return 'Completas (Oración de la noche)';
                       if (decodedFileName.includes('EVANGELIO') || decodedFileName.includes('Evangelio')) return 'Evangelio del día';
-                      if (decodedFileName.includes('Jueves')) return 'Completas (Oración antes del descanso)';
+                      if (decodedFileName.includes('Jueves')) return 'Completas (Oración de la noche)';
                       
                       // Caso especial para archivos que solo tienen números (como "5")
                       if (/^\d+$/.test(decodedFileName) || decodedFileName.length < 3) {

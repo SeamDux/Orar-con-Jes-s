@@ -96,6 +96,13 @@ export default function HomePage() {
             </TouchableOpacity>
           </Link>
 
+          <Link href="/(app)/santo" asChild>
+            <TouchableOpacity style={styles.menuItem}>
+              <MaterialCommunityIcons name="church" size={32} color={Colors.primary} />
+              <Text style={styles.menuText}>Santo del Día</Text>
+            </TouchableOpacity>
+          </Link>
+
           <Link href="/(app)/noticias" asChild>
             <TouchableOpacity style={styles.menuItem}>
               <MaterialCommunityIcons name="newspaper" size={32} color={Colors.primary} />
