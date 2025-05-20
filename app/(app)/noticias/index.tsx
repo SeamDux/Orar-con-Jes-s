@@ -22,8 +22,30 @@ export default function NoticiasScreen() {
   const router = useRouter();
 
   const extractImageFromContent = (content: string): string | undefined => {
-    const imgMatch = content.match(/<img[^>]+src="([^"]+)"/i);
-    return imgMatch ? imgMatch[1] : undefined;
+    if (!content) return undefined;
+    
+    // Buscar imágenes en el contenido HTML
+    const imgMatch = content.match(/<img[^>]+src=[\"']?([^\"' >]+)[\"']?[^>]*>/i);
+    if (imgMatch && imgMatch[1]) {
+      let imageUrl = imgMatch[1];
+      
+      // Asegurarse de que la URL sea absoluta
+      if (imageUrl.startsWith('//')) {
+        imageUrl = 'https:' + imageUrl;
+      } else if (imageUrl.startsWith('/')) {
+        imageUrl = 'https://www.obispadodesanbernardo.cl' + imageUrl;
+      }
+      
+      return imageUrl;
+    }
+    
+    // Buscar imágenes en formato de datos base64
+    const base64Match = content.match(/src=[\"']data:image\/[^;]+;base64,[^\"']+[\"']/i);
+    if (base64Match) {
+      return base64Match[0].replace(/^src=[\"']|["']$/g, '');
+    }
+    
+    return undefined;
   };
 
   // Función para extraer noticias directamente de una página web
@@ -212,169 +234,182 @@ export default function NoticiasScreen() {
       setError(null);
       console.log('Iniciando carga de noticias...');
       
-      // Lista de sitios web para extraer noticias directamente
-      const webpageUrls = [
-        'https://www.obispadodesanbernardo.cl',
-        'https://www.vaticannews.va/es.html',
-        'https://www.aciprensa.com',
-        'https://www.iglesia.cl/noticias.php'
-      ];
-      
-      // Intentar extraer noticias de páginas web primero
+      // Inicializar array de noticias
       let noticiasArray: Noticia[] = [];
       
-      // Intentar con cada sitio web hasta obtener noticias
-      for (const url of webpageUrls) {
+      // Priorizar el uso de RSS en lugar de scraping web
+      // ya que el scraping está fallando con error 500
+      console.log('Intentando obtener noticias desde feeds RSS...');
+      
+      // Intentar con una URL alternativa si la principal no funciona
+      // Usamos un proxy CORS para evitar problemas de acceso
+      const corsProxy = 'https://corsproxy.io/?';
+      const rssUrls = [
+        // Feed RSS del Obispado de San Bernardo (primera prioridad)
+        `${corsProxy}https://www.obispadodesanbernardo.cl/feed`,
+        'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.obispadodesanbernardo.cl%2Ffeed',
+        // URLs con proxy CORS
+        `${corsProxy}https://www.iglesia.cl/noticias/rss.php`,
+        `${corsProxy}https://www.iglesia.cl/noticias/rss.xml`,
+        `${corsProxy}https://www.iglesia.cl/feed/`,
+        // Fuentes alternativas de noticias católicas
+        `${corsProxy}https://www.vaticannews.va/es/rss.xml`,
+        `${corsProxy}https://www.aciprensa.com/rss/noticias.xml`
+      ];
+      
+      let response = null;
+      let errorMsg = '';
+      
+      // Intentar con cada URL hasta que una funcione
+      for (const url of rssUrls) {
         try {
-          console.log(`Intentando extraer noticias de: ${url}`);
-          const extractedNoticias = await extractNoticiasFromWebPage(url);
+          console.log(`Intentando con URL RSS: ${url}`);
+          response = await fetch(url, {
+            headers: {
+              'Accept': 'application/rss+xml, application/xml, text/xml, application/json',
+              'User-Agent': 'OrarConJesusApp/1.0'
+            }
+          });
           
-          if (extractedNoticias.length > 0) {
-            console.log(`Extracción exitosa de ${extractedNoticias.length} noticias desde ${url}`);
-            noticiasArray = extractedNoticias;
+          if (response.ok) {
+            console.log(`Conexión exitosa con: ${url}`);
             break;
+          } else {
+            errorMsg += `Error HTTP ${response.status} en ${url}. `;
           }
-        } catch (error) {
-          console.error(`Error al extraer noticias de ${url}:`, error);
+        } catch (fetchError) {
+          console.error(`Error al intentar con ${url}:`, fetchError);
+          errorMsg += `Error al conectar con ${url}. `;
         }
       }
       
-      // Si no se obtuvieron noticias de las páginas web, intentar con RSS
-      if (noticiasArray.length === 0) {
-        console.log('No se pudieron extraer noticias de páginas web, intentando con feeds RSS...');
+      if (!response || !response.ok) {
+        throw new Error(`No se pudo conectar a ninguna fuente de noticias. ${errorMsg}`);
+      }
+      
+      // Determinar si la respuesta es JSON o XML
+      const contentType = response.headers.get('content-type') || '';
+      console.log('Tipo de contenido recibido:', contentType);
+      
+      if (contentType.includes('application/json') || response.url.includes('api.rss2json.com')) {
+        // Procesar como JSON
+        console.log('Procesando respuesta como JSON');
+        const jsonData = await response.json();
+        console.log('Datos JSON recibidos:', JSON.stringify(jsonData).substring(0, 200) + '...');
         
-        // Intentar con una URL alternativa si la principal no funciona
-        // Usamos un proxy CORS para evitar problemas de acceso
-        const corsProxy = 'https://corsproxy.io/?';
-        const rssUrls = [
-          // Feed RSS del Obispado de San Bernardo (primera prioridad)
-          `${corsProxy}https://www.obispadodesanbernardo.cl/feed`,
-          'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.obispadodesanbernardo.cl%2Ffeed',
-          // URLs con proxy CORS
-          `${corsProxy}https://www.iglesia.cl/noticias/rss.php`,
-          `${corsProxy}https://www.iglesia.cl/noticias/rss.xml`,
-          `${corsProxy}https://www.iglesia.cl/feed/`,
-          // Fuentes alternativas de noticias católicas
-          `${corsProxy}https://www.vaticannews.va/es/rss.xml`,
-          `${corsProxy}https://www.aciprensa.com/rss/noticias.xml`
-        ];
-        
-        let response = null;
-        let errorMsg = '';
-        
-        // Intentar con cada URL hasta que una funcione
-        for (const url of rssUrls) {
-          try {
-            console.log(`Intentando con URL RSS: ${url}`);
-            response = await fetch(url, {
-              headers: {
-                'Accept': 'application/rss+xml, application/xml, text/xml, application/json',
-                'User-Agent': 'OrarConJesusApp/1.0'
+        if (jsonData.items && Array.isArray(jsonData.items)) {
+          // Formato de rss2json.com
+          noticiasArray = jsonData.items.map((item: any) => {
+            const content = item.content || item.description || '';
+            const description = item.description || '';
+            
+            // Extraer imagen del contenido
+            let image = item.thumbnail || item.enclosure?.link || undefined;
+            
+            // Si no hay imagen en los metadatos, intentar extraerla del contenido
+            if (!image) {
+              // Primero del contenido completo
+              image = extractImageFromContent(content);
+              
+              // Si no se encontró en el contenido, intentar con la descripción
+              if (!image) {
+                image = extractImageFromContent(description);
               }
-            });
-            
-            if (response.ok) {
-              console.log(`Conexión exitosa con: ${url}`);
-              break;
-            } else {
-              errorMsg += `Error HTTP ${response.status} en ${url}. `;
             }
-          } catch (fetchError) {
-            console.error(`Error al intentar con ${url}:`, fetchError);
-            errorMsg += `Error al conectar con ${url}. `;
-          }
-        }
-        
-        if (!response || !response.ok) {
-          throw new Error(`No se pudo conectar a ninguna fuente de noticias. ${errorMsg}`);
-        }
-        
-        // Determinar si la respuesta es JSON o XML
-        const contentType = response.headers.get('content-type') || '';
-        console.log('Tipo de contenido recibido:', contentType);
-        
-        if (contentType.includes('application/json') || response.url.includes('api.rss2json.com')) {
-          // Procesar como JSON
-          console.log('Procesando respuesta como JSON');
-          const jsonData = await response.json();
-          console.log('Datos JSON recibidos:', JSON.stringify(jsonData).substring(0, 200) + '...');
-          
-          if (jsonData.items && Array.isArray(jsonData.items)) {
-            // Formato de rss2json.com
-            noticiasArray = jsonData.items.map((item: any) => ({
-              title: item.title || '',
-              link: item.link || '',
-              pubDate: item.pubDate || '',
-              description: item.description || '',
-              content: item.content || item.description || '',
-              image: item.thumbnail || item.enclosure?.link || extractImageFromContent(item.content || '') || undefined
-            }));
-          } else if (jsonData.channel && jsonData.channel.item) {
-            // Otro formato JSON posible
-            const items = Array.isArray(jsonData.channel.item) ? jsonData.channel.item : [jsonData.channel.item];
-            noticiasArray = items.map((item: any) => ({
-              title: item.title || '',
-              link: item.link || '',
-              pubDate: item.pubDate || '',
-              description: item.description || '',
-              content: item['content:encoded'] || item.description || '',
-              image: extractImageFromContent(item['content:encoded'] || item.description || '') || undefined
-            }));
-          }
-        } else {
-          // Procesar como XML
-          console.log('Procesando respuesta como XML');
-          const text = await response.text();
-          console.log('Texto XML recibido, longitud:', text.length);
-          
-          try {
-            const feed = await rssParser.parse(text);
-            console.log('Feed parseado correctamente');
             
-            if (feed.items && feed.items.length > 0) {
-              noticiasArray = feed.items.map((item: rssParser.RssItem) => {
-                const content = item.content || '';
-                const description = item.description || '';
+            return {
+              title: item.title || '',
+              link: item.link || '',
+              pubDate: item.pubDate || new Date().toISOString(),
+              description: description,
+              content: content,
+              image: image
+            };
+          });
+        } else if (jsonData.channel && jsonData.channel.item) {
+          // Otro formato JSON posible
+          const items = Array.isArray(jsonData.channel.item) ? jsonData.channel.item : [jsonData.channel.item];
+          noticiasArray = items.map((item: any) => {
+            const content = item['content:encoded'] || item.description || '';
+            const description = item.description || '';
+            
+            // Extraer imagen del contenido
+            let image = item.enclosure?.link || undefined;
+            
+            // Si no hay imagen en los metadatos, intentar extraerla del contenido
+            if (!image) {
+              // Primero del contenido completo
+              image = extractImageFromContent(content);
+              
+              // Si no se encontró en el contenido, intentar con la descripción
+              if (!image) {
+                image = extractImageFromContent(description);
+              }
+            }
+            
+            return {
+              title: item.title || '',
+              link: item.link || '',
+              pubDate: item.pubDate || new Date().toISOString(),
+              description: description,
+              content: content,
+              image: image
+            };
+          });
+        }
+      } else {
+        // Procesar como XML
+        console.log('Procesando respuesta como XML');
+        const text = await response.text();
+        console.log('Texto XML recibido, longitud:', text.length);
+        
+        try {
+          const feed = await rssParser.parse(text);
+          console.log('Feed parseado correctamente');
+          
+          if (feed.items && feed.items.length > 0) {
+            noticiasArray = feed.items.map((item: rssParser.RssItem) => {
+              const content = item.content || '';
+              const description = item.description || '';
+              
+              return {
+                title: item.title || '',
+                link: item.links && item.links.length > 0 ? item.links[0].url : '',
+                pubDate: item.published || '',
+                description: description,
+                content: content || description,
+                image: extractImageFromContent(content) || extractImageFromContent(description) || 
+                       (item.enclosures && item.enclosures.length > 0 ? item.enclosures[0].url : undefined)
+              };
+            });
+          }
+        } catch (parseError: any) {
+          console.error('Error al parsear el feed XML:', parseError);
+          // Intentar parsear como XML simple usando DOMParser si rssParser falla
+          try {
+            console.log('Intentando parseo alternativo con DOMParser...');
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(text, 'text/xml');
+            const items = xmlDoc.getElementsByTagName('item');
+            
+            if (items.length > 0) {
+              noticiasArray = Array.from(items).map(item => {
+                const content = item.getElementsByTagName('content:encoded')[0]?.textContent || '';
+                const description = item.getElementsByTagName('description')[0]?.textContent || '';
+                const imgMatch = content.match(/<img[^>]+src="([^"]+)"/i) || description.match(/<img[^>]+src="([^"]+)"/i);
                 
                 return {
-                  title: item.title || '',
-                  link: item.links && item.links.length > 0 ? item.links[0].url : '',
-                  pubDate: item.published || '',
+                  title: item.getElementsByTagName('title')[0]?.textContent || '',
+                  link: item.getElementsByTagName('link')[0]?.textContent || '',
+                  pubDate: item.getElementsByTagName('pubDate')[0]?.textContent || '',
                   description: description,
                   content: content || description,
-                  image: extractImageFromContent(content) || extractImageFromContent(description) || 
-                         (item.enclosures && item.enclosures.length > 0 ? item.enclosures[0].url : undefined)
+                  image: imgMatch ? imgMatch[1] : undefined
                 };
               });
             }
-          } catch (parseError: any) {
-            console.error('Error al parsear el feed XML:', parseError);
-            // Intentar parsear como XML simple usando DOMParser si rssParser falla
-            try {
-              console.log('Intentando parseo alternativo con DOMParser...');
-              const parser = new DOMParser();
-              const xmlDoc = parser.parseFromString(text, 'text/xml');
-              const items = xmlDoc.getElementsByTagName('item');
-              
-              if (items.length > 0) {
-                noticiasArray = Array.from(items).map(item => {
-                  const content = item.getElementsByTagName('content:encoded')[0]?.textContent || '';
-                  const description = item.getElementsByTagName('description')[0]?.textContent || '';
-                  const imgMatch = content.match(/<img[^>]+src="([^"]+)"/i) || description.match(/<img[^>]+src="([^"]+)"/i);
-                  
-                  return {
-                    title: item.getElementsByTagName('title')[0]?.textContent || '',
-                    link: item.getElementsByTagName('link')[0]?.textContent || '',
-                    pubDate: item.getElementsByTagName('pubDate')[0]?.textContent || '',
-                    description: description,
-                    content: content || description,
-                    image: imgMatch ? imgMatch[1] : undefined
-                  };
-                });
-              }
-            } catch (domError) {
-              console.error('Error en parseo alternativo:', domError);
-            }
+          } catch (domError) {
+            console.error('Error en parseo alternativo:', domError);
           }
         }
       }

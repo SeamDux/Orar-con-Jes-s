@@ -178,6 +178,12 @@ export default function OficioDelDiaScreen() {
                     
                     // Mapeo personalizado de nombres de archivos a títulos más descriptivos
                     const getFormattedTitle = (fileName: string, index: number) => {
+                      // Verificar si es el audio de completas por la URL completa
+                      if (audioLink.includes('7-Martes-01.mp3') || 
+                          audioLink.includes('7-martes-01.mp3')) {
+                        return 'Completas (Oración de la noche)';
+                      }
+                      
                       // Decodificar URL para manejar caracteres especiales como %C3%AD (í)
                       const decodedFileName = decodeURIComponent(fileName);
                       console.log('Nombre del archivo decodificado:', decodedFileName);
@@ -185,11 +191,9 @@ export default function OficioDelDiaScreen() {
                       // Caso específico para el patrón de Completas
                       const lowerFileName = decodedFileName.toLowerCase();
                       
-                      // Detectar el patrón '7-lunes-01' o variaciones
-                      if (lowerFileName.includes('7-lunes') || 
-                          lowerFileName.includes('lunes-01') ||
-                          lowerFileName.includes('lunes 01') ||
-                          lowerFileName === '7-lunes-01-1') {
+                      // Detectar el patrón '7-día-01' o variaciones para completas
+                      if ((lowerFileName.includes('7-') && lowerFileName.includes('-01')) ||
+                          (lowerFileName.match(/7-\w+-01/) !== null)) {
                         return 'Completas (Oración de la noche)';
                       }
                       
