@@ -478,7 +478,7 @@ export default function NoticiasScreen() {
     <View style={styles.container}>
       <Stack.Screen 
         options={{
-          title: 'Noticias de la Iglesia',
+          title: 'Noticias de la Diocesis',
           headerStyle: {
             backgroundColor: Colors.primary,
           },
