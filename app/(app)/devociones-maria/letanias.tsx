@@ -127,13 +127,13 @@ export default function LetaniasVirgenScreen() {
 
           <Text style={styles.oracion}>
             - Por las intenciones del Sumo Pontifice para ganar las indulgencias concedidas:{'\n'}
-            <text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</text>{'\n\n'}
+            <Text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</Text>{'\n\n'}
             - Por las necesidades de la Iglesia y del Estado:{'\n'}
-            <text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</text>{'\n\n'}
+            <Text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</Text>{'\n\n'}
             - Por la persona e intenciones del Sr. (Arz) Obispo de esta diócesis:{'\n'}
-            <text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</text>{'\n\n'}
+            <Text style={styles.respuesta}>Padrenuestro. Avemaría. Gloria.</Text>{'\n\n'}
             - Por las benditas almas del Purgatorio:{'\n'}
-            <text style={styles.respuesta}>Padrenuestro. Avemaría. Que descansen en paz.</text>
+            <Text style={styles.respuesta}>Padrenuestro. Avemaría. Que descansen en paz.</Text>
           </Text>
         </View>
       </ScrollView>
