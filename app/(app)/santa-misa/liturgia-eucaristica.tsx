@@ -112,7 +112,7 @@ export default function LiturgiaEucaristicaPage() {
 
           <Text style={styles.textoRojoItalic}>El sacerdote, con claridad, pronuncia las palabras del Señor para consagrar el pan:</Text>
 
-          <Text style={styles.texto}>
+          <Text style={styles.textoNegrita}>
             TOMEN Y COMAN TODOS DE ÉL,{'\n'}
             PORQUE ESTO ES MI CUERPO,{'\n'}
             QUE SERÁ ENTREGADO POR USTEDES.
@@ -125,7 +125,7 @@ export default function LiturgiaEucaristicaPage() {
             lo pasó a sus discípulos diciendo:
           </Text>
 
-          <Text style={styles.texto}>
+          <Text style={styles.textoNegrita}>
             TOMEN Y BEBAN TODOS DE ÉL,{'\n'}
             PORQUE ÉSTE ES EL CÁLIZ DE MI SANGRE,{'\n'}
             SANGRE DE LA ALIANZA NUEVA Y ETERNA,{'\n'}
@@ -417,6 +417,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 28,
     marginBottom: 10,
+    fontStyle: 'italic',
+    textAlign: 'justify',
+  },
+  textoNegrita: {
+    fontSize: 18,
+    lineHeight: 28,
+    marginBottom: 10,
+    fontWeight:'bold',
+    color:'#000000',
     fontStyle: 'italic',
     textAlign: 'justify',
   },
