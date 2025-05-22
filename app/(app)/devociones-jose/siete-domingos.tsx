@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Text, View } from '../../../components/Themed';
 import Colors from '../../../constants/Colors';
 import { Stack } from 'expo-router';
+import { ThemedText } from '../../../components/ThemedText';
 
 interface DomingoSanJose {
   numero: number;
@@ -349,21 +350,31 @@ Por Jesucristo, nuestro Señor. Amén`
   }
 ];
 
-export default function SieteDomingosScreen() {
+export default function SieteDomingosSanJoseScreen() {
   const [domingoSeleccionado, setDomingoSeleccionado] = useState<DomingoSanJose | null>(null);
 
   const renderTextoConTitulos = (texto: string) => {
     const partes = texto.split(/\[TITULO\](.*?)\[\/TITULO\]/g);
+    const secciones = [];
+    
+    // Procesar las partes para agruparlas en secciones (título + contenido)
+    for (let i = 1; i < partes.length; i += 2) {
+      if (i + 1 < partes.length) {
+        secciones.push({
+          titulo: partes[i],
+          contenido: partes[i + 1].trim()
+        });
+      }
+    }
+    
     return (
       <>
-        {partes.map((parte, index) => {
-          if (index % 2 === 1) {
-            // Es un título
-            return <Text key={index} style={styles.subtitulo}>{parte}</Text>;
-          }
-          // Es texto normal
-          return <Text key={index} style={styles.textoContenido}>{parte}</Text>;
-        })}
+        {secciones.map((seccion, index) => (
+          <View key={index} style={styles.sectionCard}>
+            <ThemedText type="subtitle">{seccion.titulo}</ThemedText>
+            <Text style={styles.prayer}>{seccion.contenido}</Text>
+          </View>
+        ))}
       </>
     );
   };
@@ -384,8 +395,10 @@ export default function SieteDomingosScreen() {
       <ScrollView style={styles.container}>
         <View style={styles.content}>
           {domingoSeleccionado ? (
-            <View style={styles.domingoDetalle}>
-              <Text style={styles.domingoTitulo}>{domingoSeleccionado.titulo}</Text>
+            <>
+              <View style={styles.headerCard}>
+                <Text style={styles.mainTitle}>{domingoSeleccionado.titulo}</Text>
+              </View>
               {renderTextoConTitulos(domingoSeleccionado.contenido)}
               <TouchableOpacity 
                 style={styles.botonVolver}
@@ -393,15 +406,19 @@ export default function SieteDomingosScreen() {
               >
                 <Text style={styles.botonVolverTexto}>Volver al listado</Text>
               </TouchableOpacity>
-            </View>
+            </>
           ) : (
             <>
-              <View style={styles.introduccion}>
-                <Text style={styles.introduccionTitulo}>Los Siete Domingos de San José</Text>
-                <Text style={styles.introduccionTexto}>
-                La Iglesia, siguiendo una antigua costumbre, prepara la fiesta de San José, el día 19 de marzo, dedicando al Santo Patriarcalos siete domingos anteriores a esa fiesta —en recuerdo de los principales gozos y dolores de la vida de San José.
+              <View style={styles.headerCard}>
+                <Text style={styles.mainTitle}>Los Siete Domingos de San José</Text>
+              </View>
+              
+              <View style={styles.sectionCard}>
+                <ThemedText type="subtitle">Introducción</ThemedText>
+                <Text style={styles.prayer}>
+                La Iglesia, siguiendo una antigua costumbre, prepara la fiesta de San José, el día 19 de marzo, dedicando al Santo Patriarca los siete domingos anteriores a esa fiesta —en recuerdo de los principales gozos y dolores de la vida de San José.
                 </Text>
-                <Text style={styles.introduccionTexto}>
+                <Text style={styles.prayer}>
                 Comienzan el séptimo domingo antes del 19 de marzo (último domingo de enero o primero de febrero). Las consideraciones están tomadas de Juan Pablo II, Redemptores custos, 1989
                 </Text>
               </View>
@@ -431,10 +448,32 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
-  introduccion: {
+  headerCard: {
     backgroundColor: Colors.white,
-    padding: 20,
     borderRadius: 10,
+    padding: 20,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  mainTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: Colors.primary,
+    marginBottom: 5,
+    textAlign: 'center',
+  },
+  sectionCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    padding: 20,
     marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: {
@@ -445,18 +484,12 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  introduccionTitulo: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.primary,
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  introduccionTexto: {
-    fontSize: 18,
-    lineHeight: 28,
+  prayer: {
+    fontSize: 16,
+    color: '#333',
     textAlign: 'justify',
-    marginBottom: 10,
+    lineHeight: 24,
+    marginBottom: 15,
   },
   domingoItem: {
     backgroundColor: Colors.white,
@@ -477,31 +510,15 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     textAlign: 'center',
   },
-  domingoDetalle: {
-    backgroundColor: Colors.white,
-    padding: 20,
-    borderRadius: 10,
-  },
-  domingoTitulo: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.primary,
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  textoContenido: {
-    fontSize: 18,
-    lineHeight: 28,
-    textAlign: 'justify',
-    marginBottom: 10,
-    paddingHorizontal: 5,
-  },
+
+
   botonVolver: {
     backgroundColor: Colors.primary,
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 30,
   },
   botonVolverTexto: {
     color: Colors.white,
@@ -509,10 +526,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   subtitulo: {
-    fontSize: 22,
-    fontWeight: 'bold',
     color: Colors.primary,
     textAlign: 'center',
     marginVertical: 15,
   },
-}); 
+});
