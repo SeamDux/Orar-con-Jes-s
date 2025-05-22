@@ -384,11 +384,26 @@ const searchData: SearchItem[] = [
     keywords: ['matrimonio', 'sacramento', 'esposos', 'familia']
   },
 
+
+  // Noticias de la Diocesis
+  {
+    title: 'Noticias de la Diocesis',
+    route: '/noticias',
+    category: 'Diocesis de San Bernardo',
+    keywords: ['noticias', 'san bernardo']
+  },
+
   // Liturgia de las horas
   
   {
     title: 'Laudes',
     route: '/liturgia/laudes',
+    category: 'Liturgia de las horas',
+    keywords: ['laudes', 'completas', 'visperas', 'oracion de mañana', 'oracion de la noche', 'oracion de la tarde']
+  },
+  {
+    title: 'Oficio del Día',
+    route: '/(app)/oficio-del-dia',
     category: 'Liturgia de las horas',
     keywords: ['laudes', 'completas', 'visperas', 'oracion de mañana', 'oracion de la noche', 'oracion de la tarde']
   },
