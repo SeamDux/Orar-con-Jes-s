@@ -74,8 +74,9 @@ export default function RecomendacionScreen() {
           </View>
 
           <View style={styles.seccion}>
+          <Text style={styles.subtitulo}>3.</Text>
             <Text style={styles.texto}>
-              3. V. Dale, Señor, a tu hijo(a) la eterna salvación que espera{"\n"}
+              V. Dale, Señor, a tu hijo(a) la eterna salvación que espera{"\n"}
               de tu misericordia. Amén.{"\n\n"}
               V. Salva, Señor, a tu hijo(a) de todas las tribulaciones.{"\n"}
               Amén.{"\n\n"}

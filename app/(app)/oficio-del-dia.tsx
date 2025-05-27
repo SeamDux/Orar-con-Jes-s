@@ -72,14 +72,23 @@ export default function OficioDelDiaScreen() {
         // Extraer enlaces de audio del contenido
         const content = item.content || '';
         
-        // Extraer URLs de audio usando expresiones regulares
-        const audioRegex = /<audio[^>]*src="([^"]+)"[^>]*>/g;
-        const audioLinks: string[] = [];
-        let match;
+        // Extraer todas las etiquetas que podrían contener audios
+        const audioRegex = /(<audio[^>]*>.*?<\/audio>|<source[^>]*>|<a[^>]*\.(?:mp3|wav|ogg)[^>]*>)/gis;
+        const srcRegex = /(?:src|href|data-url)="([^"]+\.(?:mp3|wav|ogg))"/i;
         
-        while ((match = audioRegex.exec(content)) !== null) {
-          if (match[1]) {
-            audioLinks.push(match[1]);
+        const audioLinks: string[] = [];
+        let audioMatch;
+        
+        // Primero encontrar todas las etiquetas que podrían contener audios
+        while ((audioMatch = audioRegex.exec(content)) !== null) {
+          const tagContent = audioMatch[1];
+          const srcMatch = srcRegex.exec(tagContent);
+          
+          if (srcMatch && srcMatch[1]) {
+            const audioUrl = srcMatch[1];
+            if (!audioLinks.includes(audioUrl)) {
+              audioLinks.push(audioUrl);
+            }
           }
         }
         
@@ -247,14 +256,25 @@ export default function OficioDelDiaScreen() {
                     
                     const displayTitle = getFormattedTitle(audioName, index);
                     
+
+
                     return (
                       <TouchableOpacity 
                         key={index} 
                         style={styles.audioItem}
                         onPress={() => openAudio(audioLink)}
                       >
-                        <MaterialCommunityIcons name="play-circle" size={24} color={Colors.primary} />
-                        <Text style={styles.audioName}>{displayTitle}</Text>
+                        <View style={styles.audioContent}>
+                          <MaterialCommunityIcons 
+                            name="play-circle" 
+                            size={40} 
+                            color={Colors.primary} 
+                            style={styles.playIcon}
+                          />
+                          <View style={styles.textContainer}>
+                            <Text style={styles.audioName} numberOfLines={1} ellipsizeMode="tail">{displayTitle}</Text>
+                          </View>
+                        </View>
                       </TouchableOpacity>
                     );
                   })}
@@ -337,16 +357,32 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   audioItem: {
+    marginVertical: 8,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Colors.primary,
+    backgroundColor: '#fff',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    overflow: 'hidden',
+  },
+  audioContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    padding: 16,
+  },
+  playIcon: {
+    marginRight: 12,
+  },
+  textContainer: {
+    flex: 1,
   },
   audioName: {
     fontSize: 16,
-    marginLeft: 10,
-    color: Colors.text,
+    color: Colors.primary,
     fontWeight: '500',
   },
   linkButton: {
