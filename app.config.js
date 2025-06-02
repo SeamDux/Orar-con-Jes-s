@@ -1,5 +1,11 @@
 module.exports = {
   expo: {
+    updates: {
+      url: "https://u.expo.dev/bf6414f8-8793-416a-a967-8141f890fb15"
+    },
+    runtimeVersion: {
+      policy: "appVersion"
+    },
     extra: {
       eas: {
         projectId: 'bf6414f8-8793-416a-a967-8141f890fb15'
