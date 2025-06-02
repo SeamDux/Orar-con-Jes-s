@@ -1,13 +1,18 @@
 module.exports = {
   expo: {
+    extra: {
+      eas: {
+        projectId: 'bf6414f8-8793-416a-a967-8141f890fb15'
+      }
+    },
     name: 'Orar con Jesús',
     slug: 'orarconjesus',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './assets/icon.png',
+    icon: './assets/images/icon.png',
     userInterfaceStyle: 'light',
     splash: {
-      image: './assets/splash.png',
+      image: './assets/images/splash-icon.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff'
     },
@@ -18,13 +23,16 @@ module.exports = {
       supportsTablet: true
     },
     android: {
+      package: 'com.orarconjesus.app',
+      versionCode: 1,
       adaptiveIcon: {
-        foregroundImage: './assets/adaptive-icon.png',
+        foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#ffffff'
-      }
+      },
+      permissions: []
     },
     web: {
-      favicon: './assets/favicon.png',
+      favicon: './assets/images/favicon.png',
       bundler: 'metro'
     },
     plugins: [
